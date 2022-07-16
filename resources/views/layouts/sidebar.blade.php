@@ -65,81 +65,84 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        All Data
+        INTERFACE
     </div>
-
     <!-- Nav Item - Pages Collapse Menu -->
-    {{-- <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Pages</span>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Management</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
+                <h6 class="collapse-header">CUSTOM DATA:</h6>
+                <a class="collapse-item" href="{{ route('management') }}">Register</a>
+                <a class="collapse-item" href="{{ route('area') }}">Room / Area</a>
+                <a class="collapse-item" href="{{route('visit-purpose')}}">Visit Purpose</a>
             </div>
         </div>
-    </li> --}}
 
-    {{-- <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li> --}}
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Data Ruangan</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTheree"
+            aria-expanded="true" aria-controls="collapseTheree">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Request to</span>
+        </a>
+        <div id="collapseTheree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">FORM:</h6>
+                <a class="collapse-item" href="buttons.html">Visit</a>
+            </div>
+        </div>
     </li>
-    {{-- <li class="nav-item">
-            <a class="nav-link" href="{{ route('data-pernikahan') }}">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Data Akta Pernikahan</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('data-arsip-pernikahan') }}">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Data Arsip Pernikahan</span></a>
-        </li> --}}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+            aria-expanded="true" aria-controls="collapseFour">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Validate</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">DATA:</h6>
+                <a class="collapse-item" href="buttons.html">Visit Code</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSix"
+            aria-expanded="true" aria-controls="collapseSix">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Control</span>
+        </a>
+        <div id="collapseSix" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">CUSTOM DATA:</h6>
+                <a class="collapse-item" href="buttons.html">Visit Record</a>
+            </div>
+        </div>
+    </li>
 
-    {{-- <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Laporan Pernikahan</span></a>
-    </li> --}}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSeven"
+            aria-expanded="true" aria-controls="collapseSeven">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Reporting</span>
+        </a>
+        <div id="collapseSeven" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">REPORT FORMAT:</h6>
+                <a class="collapse-item" href="buttons.html">Visit</a>
+            </div>
+        </div>
+    </li>
 
-    <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
-
-    <div class="sidebar-heading">
-        Laporan
-    </div>
     <li class="nav-item">
         <a class="nav-link" href="">
             <i class="fas fa-fw fa-table"></i>
-            <span>Laporan Data Visitor</span></a>
-    </li>
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <div class="sidebar-heading">
-        Register Pegawai
-    </div>
-    <li class="nav-item">
-        <a class="nav-link" href="">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Register Akun</span></a>
+            <span>Logout</span></a>
     </li>
 
     <!-- Sidebar Toggler (Sidebar) -->

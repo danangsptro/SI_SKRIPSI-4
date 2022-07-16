@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('assets/css/sb-admin-2.css')}}">
 </head>
+
 <body class="bg-gradient-light" style="margin-top: 8rem;">
     <div id="app">
         <main class="py-4">
@@ -27,9 +29,10 @@
         </main>
     </div>
 </body>
+
 </html>
 
-<script src="{{asset('assets/vendor/jquery/jquery.js')}}"></script>
-<script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.js')}}"></script>
-<script src="{{asset('assets/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
-<script src="{{asset('assets/js/sb-admin-2.js')}}"></script>
+<script src="{{ asset('assets/vendor/jquery/jquery.js') }}"></script>
+<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+<script src="{{ asset('assets/js/sb-admin-2.js') }}"></script>

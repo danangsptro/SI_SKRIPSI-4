@@ -15,7 +15,10 @@ class AddUsernameColumnsToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('username')->unique()->after('email');
-            $table->string('user_role')->after('username');
+            $table->string('position')->after('username');
+            $table->string('company')->after('position');
+            $table->string('contact')->after('company');
+            $table->string('status')->after('contact');
         });
     }
 

@@ -14,9 +14,12 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->insert([
             'name' => 'admin',
-            'user_role' => 'pegawai',
+            'position' => 'pegawai',
             'username' => 'adminpegawai',
             'email' => 'admin@gmail.com',
+            'company' => 'testing',
+            'contact' => '08128128128',
+            'status' => 'Non-Active',
             'password' => Hash::make('qwerty'),
         ]);
     }
