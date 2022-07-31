@@ -8,6 +8,29 @@
     <hr>
     <div class="mt-4 text-right">
         <a href="#" onclick="add()" class="btn btn-sm btn-success"><i class="fa fa-plus mr-2"></i>Tambah Data</a>
+    </div>  
+    <div class="card my-2">
+        <div class="card-body">
+            <div class="col-md-6 px-0">
+                <div class="row mb-2">
+                    <label for="role_id_filter" class="col-form-label s-12 col-md-2 text-right font-weight-bolder">Role </label>
+                    <div class="col-sm-8">
+                        <select class="fs-14 form-control r-0 light s-12" id="role_id_filter" name="role_id_filter">
+                            <option value="0">Semua</option>
+                            @foreach ($roles as $i)
+                                <option value="{{ $i->id }}">{{ $i->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+                        <button class="btn btn-success btn-sm" onclick="pressOnChange()"><i class="fa fa-filter mr-2"></i>Filter</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
     </div>
     <div class="card my-2">
         <div class="card-body">
@@ -113,7 +136,10 @@
         pageLength: 25,
         ajax: {
             url: "{{ route('user.index') }}",
-            method: 'GET'
+            method: 'GET',
+            data: function (data) {
+                data.role_id_filter = $('#role_id_filter').val();
+            }
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', className: 'text-center', orderable: false, searchable: false},
@@ -125,6 +151,11 @@
             {data: 'action', name: 'action', className: 'text-center', orderable: false, searchable: false}
         ]
     });
+
+    pressOnChange();
+    function pressOnChange(){
+        table.api().ajax.reload();
+    }
 
     $('.select2').select2({
         dropdownParent: $('#modalForm')

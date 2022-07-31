@@ -61,3 +61,22 @@ table.data-table {
     object-fit: cover;
     object-position: center
 }
+
+
+@media (max-width: 768px) {
+    .img-dynamic{
+        display: none;
+    } 
+
+    .mb-5-m {
+        margin-bottom: 8px;
+    }
+
+    .text-right{
+        text-align: left !important;
+    }
+
+    .mb-5-m{
+        margin-bottom: 10px !important;
+    }
+}  

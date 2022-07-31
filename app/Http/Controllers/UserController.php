@@ -22,8 +22,10 @@ class UserController extends Controller
         $title = $this->title;
         $desc  = $this->desc;
 
+        //* DataTable
+        $role_id = $request->role_id_filter;
         if ($request->ajax()) {
-            return $this->dataTable();
+            return $this->dataTable($role_id);
         }
 
         $roles = Role::select('id', 'nama')->get();
@@ -35,9 +37,9 @@ class UserController extends Controller
         ));
     }
 
-    public function dataTable()
+    public function dataTable($role_id)
     {
-        $data = User::queryTable();
+        $data = User::queryTable($role_id);
 
         return DataTables::of($data)
             ->addColumn('action', function ($p) {

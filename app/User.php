@@ -12,16 +12,19 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $table = 'users';
-    protected $fillable = ['id', 'role_id', 'nama', 'email', 'username', 'perusahaan', 'departemen', 'jabatan', 'no_telp'];
+    protected $fillable = ['id', 'role_id', 'nama', 'email', 'perusahaan', 'departemen', 'jabatan', 'no_telp'];
 
     public function role()
     {
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    public static function queryTable()
+    public static function queryTable($role_id)
     {
-        $data = User::all();
+        $data = User::select('id', 'role_id', 'nama', 'email', 'perusahaan', 'departemen', 'jabatan', 'no_telp')
+            ->when($role_id != 0, function ($p) use ($role_id) {
+                return $p->where('role_id', $role_id);
+            })->get();
 
         return $data;
     }
