@@ -1,0 +1,63 @@
+.master-bg-payment {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+@media (max-width: 768px) {
+    .img-dynamic{
+        display: none;
+    } 
+
+    .mb-5-m {
+        margin-bottom: 8px;
+    }
+
+    .text-end{
+        text-align: left !important;
+    }
+}  
+
+.css-selector {
+    background: linear-gradient(89deg, #0f51d2, #1cf8f2, #5aaf2b, #f7b364);
+    background-size: 800% 800%;
+
+    -webkit-animation: AnimationName 90s ease infinite;
+    -moz-animation: AnimationName 90s ease infinite;
+    animation: AnimationName 90s ease infinite;
+}
+
+
+table.data-table {
+    clear: both;
+    margin-top: 10px !important;
+    margin-bottom: 6px !important;
+    font-size: 14px !important;
+}
+
+.dataTables_length label,
+.dataTables_filter label {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    font-size: 14px !important;
+}
+
+.dt-buttons,
+.dataTables_info {
+    position: relative;
+    float: left;
+    font-size: 14px;
+}
+
+.dataTables_paginate  {
+    margin-top: 10px !important;
+}
+
+#dataTable_previous, #dataTable_next{
+    margin: 0 !important;
+}
+
+.img-circular {
+    object-fit: cover;
+    object-position: center
+}

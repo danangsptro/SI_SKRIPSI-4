@@ -16,7 +16,7 @@
         Menu
     </div>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('user.index') }}">
             <i class="fas fa-fw fa-user"></i>
             <span>User</span>
         </a>

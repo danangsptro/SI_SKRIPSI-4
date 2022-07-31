@@ -8,11 +8,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Title --> 
-    <link rel="icon" href="{{ asset('images/logo/tangsel.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
     <title>{{ env('APP_NAME') }}</title>
 
     <!-- CSS -->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="{{ asset('css/util.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/select2.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
 
     <!-- Icon -->
     <link href="{{ asset('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -29,6 +34,7 @@
             <div id="content">
                 @include('layouts.topbar')
                 <main>
+                    <div class="alert alert-warning text-center position-absolute fw-bold fs-14 p-2" style="z-index: 9999999; left: 47%; display: none" id="loading">Harap tunggu.</div>
                     @yield('content')
                 </main>
             </div>
@@ -36,11 +42,15 @@
     </div>
 </body>
     <!-- Script -->
-    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
     <script src="{{ asset('assets/js/sb-admin-2.min.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
     <script type="text/javascript">
         var APP_URL = {!! json_encode(url('/') . '/') !!};
         $.ajaxSetup({
