@@ -5,29 +5,58 @@
         <p class="fs-30 mb-0">{{ $title }}</p>
         <span>{{ $desc }}</span>
     </div>
-    <hr>
     <div class="mt-4 text-right">
         <a href="#" onclick="add()" class="btn btn-sm btn-success"><i class="fa fa-plus mr-2"></i>Tambah Data</a>
     </div>  
     <div class="card my-2">
         <div class="card-body">
-            <div class="col-md-6 px-0">
-                <div class="row mb-2">
-                    <label for="role_id_filter" class="col-form-label s-12 col-md-2 text-right font-weight-bolder">Role </label>
-                    <div class="col-sm-8">
-                        <select class="fs-14 form-control r-0 light s-12" id="role_id_filter" name="role_id_filter">
-                            <option value="0">Semua</option>
-                            @foreach ($roles as $i)
-                                <option value="{{ $i->id }}">{{ $i->nama }}</option>
-                            @endforeach
-                        </select>
+            <div class="row">
+                <div class="col-md-6 px-0">
+                    <div class="row mb-2">
+                        <label for="role_id_filter" class="col-form-label col-md-2 text-right font-weight-bolder">Role </label>
+                        <div class="col-sm-8">
+                            <select class="fs-14 form-control r-0 light" id="role_id_filter" name="role_id_filter">
+                                <option value="0">Semua</option>
+                                @foreach ($roles as $i)
+                                    <option value="{{ $i->id }}">{{ $i->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <button class="btn btn-success btn-sm" onclick="pressOnChange()"><i class="fa fa-filter mr-2"></i>Filter</button>
+                        </div> 
                     </div>
                 </div>
-                <div class="row mb-4">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
-                        <button class="btn btn-success btn-sm" onclick="pressOnChange()"><i class="fa fa-filter mr-2"></i>Filter</button>
-                    </div> 
+                <div class="col-md-6 px-0">
+                    <div class="row">
+                        <div class="col-md-3 mb-2">
+                            <div class="p-2 bg-success text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Admin</p>
+                                <p class="mb-0 fs-14">49</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <div class="p-2 bg-info text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Manager</p>
+                                <p class="mb-0 fs-14">49</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-2">
+                            <div class="p-2 bg-warning text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Pegawai</p>
+                                <p class="mb-0 fs-14">49</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="p-2 bg-primary text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Security</p>
+                                <p class="mb-0 fs-14">49</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
