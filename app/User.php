@@ -22,8 +22,8 @@ class User extends Authenticatable
     public static function queryTable($role_id)
     {
         $data = User::select('id', 'role_id', 'nama', 'email', 'perusahaan', 'departemen', 'jabatan', 'no_telp')
-            ->when($role_id != 0, function ($p) use ($role_id) {
-                return $p->where('role_id', $role_id);
+            ->when($role_id != 0, function ($q) use ($role_id) {
+                return $q->where('role_id', $role_id);
             })->get();
 
         return $data;

@@ -22,7 +22,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('room.index') }}">
             <i class="fas fa-fw fa-building"></i>
             <span>Room</span>
         </a>
