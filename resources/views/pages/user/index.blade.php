@@ -15,7 +15,7 @@
                     <div class="row mb-2">
                         <label for="role_id_filter" class="col-form-label col-md-2 text-right font-weight-bolder">Role </label>
                         <div class="col-sm-8">
-                            <select class="fs-14 form-control r-0 light" id="role_id_filter" name="role_id_filter">
+                            <select class="fs-14 form-control fs-14 r-0 light" id="role_id_filter" name="role_id_filter">
                                 <option value="0">Semua</option>
                                 @foreach ($roles as $i)
                                     <option value="{{ $i->id }}">{{ $i->nama }}</option>
@@ -81,7 +81,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalForm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalForm" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-primary">
@@ -98,7 +98,7 @@
                     <div class="row mb-2">
                         <label for="role_id" class="col-sm-3 col-form-label font-weight-bold">Role <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                            <select class="form-select select2" name="role_id" id="role_id">
+                            <select class="form-select fs-14 select2" name="role_id" id="role_id">
                                 <option value="">Pilih</option>
                                 @foreach ($roles as $i)
                                     <option value="{{ $i->id }}">{{ $i->nama }}</option>
@@ -109,37 +109,37 @@
                     <div class="row mb-2">
                         <label for="nama" class="col-sm-3 col-form-label font-weight-bold">Nama <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                          <input type="text" name="nama" id="nama" class="form-control" autocomplete="off" required>
+                          <input type="text" name="nama" id="nama" class="form-control fs-14" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label for="email" class="col-sm-3 col-form-label font-weight-bold">Email <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                          <input type="email" name="email" id="email" class="form-control" autocomplete="off" required>
+                          <input type="email" name="email" id="email" class="form-control fs-14" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label for="no_telp" class="col-sm-3 col-form-label font-weight-bold">No Telp <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                          <input type="number" name="no_telp" id="no_telp" class="form-control" autocomplete="off" required>
+                          <input type="number" name="no_telp" id="no_telp" class="form-control fs-14" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label for="perusahaan" class="col-sm-3 col-form-label font-weight-bold">Perusahaan <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                          <input type="text" name="perusahaan" id="perusahaan" class="form-control" autocomplete="off" required>
+                          <input type="text" name="perusahaan" id="perusahaan" class="form-control fs-14" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label for="departemen" class="col-sm-3 col-form-label font-weight-bold">Departemen <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                          <input type="text" name="departemen" id="departemen" class="form-control" autocomplete="off" required>
+                          <input type="text" name="departemen" id="departemen" class="form-control fs-14" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <label for="jabatan" class="col-sm-3 col-form-label font-weight-bold">Jabatan <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                          <input type="text" name="jabatan" id="jabatan" class="form-control" autocomplete="off" required>
+                          <input type="text" name="jabatan" id="jabatan" class="form-control fs-14" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="row">

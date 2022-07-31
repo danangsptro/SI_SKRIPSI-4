@@ -10,35 +10,12 @@
     </div>  
     <div class="card my-2">
         <div class="card-body">
-            <div class="col-md-6 px-0">
-                <div class="row mb-2">
-                    <label for="status_filter" class="col-form-label col-md-2 text-right font-weight-bolder">Status </label>
-                    <div class="col-sm-8">
-                        <select class="fs-14 form-control r-0 light" id="status_filter" name="status_filter">
-                            <option value="99">Semua</option>
-                            <option value="1">Aktif</option>
-                            <option value="0">Tidak Aktif</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row mb-4">
-                    <div class="col-sm-2"></div>
-                    <div class="col-sm-8">
-                        <button class="btn btn-success btn-sm" onclick="pressOnChange()"><i class="fa fa-filter mr-2"></i>Filter</button>
-                    </div> 
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card my-2">
-        <div class="card-body">
             <div class="table-responsive">
                 <table id="dataTable" class="table data-table table-hover table-bordered" style="width:100%;">
                     <thead>
                         <tr>
                             <th width="10%">No</th>
-                            <th width="50%">Nama</th>
-                            <th width="30%">Status</th>
+                            <th width="80%">Tujuan</th>
                             <th width="10%">Action</th>
                         </tr>
                     </thead>
@@ -62,19 +39,9 @@
                     <input type="text" class="d-none" id="id" name="id"/>
                     <div id="alert"></div>
                     <div class="row mb-2">
-                        <label for="nama" class="col-sm-3 col-form-label font-weight-bold">Nama <span class="text-danger">*</span></label>
+                        <label for="tujuan" class="col-sm-3 col-form-label font-weight-bold">Tujuan <span class="text-danger">*</span></label>
                         <div class="col-sm-9">
-                          <input type="text" name="nama" id="nama" class="form-control fs-14" autocomplete="off" required>
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <label for="status" class="col-sm-3 col-form-label font-weight-bold">Status <span class="text-danger">*</span></label>
-                        <div class="col-sm-9">
-                            <select class="form-select fs-14 select2" name="status" id="status">
-                                <option value="">Pilih</option>
-                                <option value="1">Aktif</option>
-                                <option value="0">Tidak Aktif</option>
-                            </select>
+                          <input type="text" name="tujuan" id="tujuan" class="form-control fs-14" autocomplete="off" required>
                         </div>
                     </div>
                     <div class="row">
@@ -99,24 +66,15 @@
         order: [ 0, 'asc' ],
         pageLength: 25,
         ajax: {
-            url: "{{ route('room.index') }}",
-            method: 'GET',
-            data: function (data) {
-                data.status_filter = $('#status_filter').val();
-            }
+            url: "{{ route('purpose.index') }}",
+            method: 'GET'
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', className: 'text-center', orderable: false, searchable: false},
-            {data: 'nama', name: 'nama'},
-            {data: 'status', name: 'status', className: 'text-center'},
+            {data: 'tujuan', name: 'tujuan'},
             {data: 'action', name: 'action', className: 'text-center', orderable: false, searchable: false}
         ]
     });
-
-    pressOnChange();
-    function pressOnChange(){
-        table.api().ajax.reload();
-    }
 
     $('.select2').select2({
         dropdownParent: $('#modalForm')
@@ -134,7 +92,7 @@
 
     function edit(id){
         $('#loading').show();
-        $.get("{{ Route('room.edit', ':id') }}".replace(':id', id), function(data){
+        $.get("{{ Route('purpose.edit', ':id') }}".replace(':id', id), function(data){
             save_method = 'edit';
             $('#txtTitle').html('Edit');
             $('#txtSave').html("Perubahan");
@@ -143,8 +101,7 @@
             $('#loading').hide();
             openForm();
             $('#id').val(data.id);
-            $('#nama').val(data.nama);
-            $('#status').val(data.status).trigger("change.select2");
+            $('#tujuan').val(data.tujuan);
         });
     }
 
@@ -157,7 +114,7 @@
             $('#alert').html('');
             $('#btnSave').attr('disabled', true);
             
-            url = (save_method == 'add') ? "{{ route('room.store') }}" : "{{ route('room.update', ':id') }}".replace(':id', $('#id').val());
+            url = (save_method == 'add') ? "{{ route('purpose.store') }}" : "{{ route('purpose.update', ':id') }}".replace(':id', $('#id').val());
             $.post(url, $(this).serialize(), function(data){
                 $('#alert').html("<div class='alert alert-success alert-dismissible' role='alert'><strong>Sukses!</strong> " + data.message + "</div>");
                 table.api().ajax.reload();
@@ -192,7 +149,7 @@
                     btnClass: 'btn-primary',
                     keys: ['enter'],
                     action: function(){
-                        $.post("{{ route('room.destroy', ':id') }}".replace(':id', id), {'_method' : 'DELETE'}, function(data) {
+                        $.post("{{ route('purpose.destroy', ':id') }}".replace(':id', id), {'_method' : 'DELETE'}, function(data) {
                             table.api().ajax.reload();
                             success(data.message)
                         }, "JSON").fail(function(){

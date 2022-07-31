@@ -28,7 +28,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('purpose.index') }}">
             <i class="fas fa-fw fa-file-archive"></i>
             <span>Purpose</span>
         </a>
