@@ -25,13 +25,13 @@
 <body id="page-top">
     <div id="wrapper">
         @include('layouts.sidebar')
-    </div>
-    <div id="content-wrapper" class="d-flex flex-column">
-        <div id="content">
-            @include('layouts.topbar')
-            <main>
-                @yield('content')
-            </main>
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                @include('layouts.topbar')
+                <main>
+                    @yield('content')
+                </main>
+            </div>
         </div>
     </div>
 </body>

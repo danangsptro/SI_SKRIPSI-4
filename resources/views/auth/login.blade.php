@@ -31,7 +31,7 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control fs-14 @error('email') is-invalid @enderror" id="email" name="email" placeholder="Masukan Email" autofocus>
+                            <input type="email" class="form-control fs-14 @error('email') is-invalid @enderror" id="email" name="email" placeholder="Masukan Email" required autofocus>
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -39,14 +39,14 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control fs-14 @error('password') is-invalid @enderror" id="password" name="password" placeholder="Masukan Password">
+                            <input type="password" class="form-control fs-14 @error('password') is-invalid @enderror" id="password" name="password" placeholder="Masukan Password" required>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
-                        <button class="btn btn-primary btn-block"><i class="fa fa-arrow-right mr-2"></i>Login</button>
+                        <button class="btn btn-primary btn-block fs-14 font-weight-bold"><i class="fa fa-arrow-right mr-2"></i>Login</button>
                     </form>
                 </div>
             </div>
