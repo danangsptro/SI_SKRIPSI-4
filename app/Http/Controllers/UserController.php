@@ -30,10 +30,20 @@ class UserController extends Controller
 
         $roles = Role::select('id', 'nama')->get();
 
+        //* Get total role
+        $admin = User::where('role_id', '1')->count();
+        $manager = User::where('role_id', '2')->count();
+        $staff = User::where('role_id', '3')->count();
+        $security = User::where('role_id', '4')->count();
+
         return view($this->pages . 'index', compact(
             'title',
             'desc',
-            'roles'
+            'roles',
+            'admin',
+            'manager',
+            'staff',
+            'security'
         ));
     }
 

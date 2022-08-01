@@ -35,25 +35,25 @@
                         <div class="col-md-3 mb-2">
                             <div class="p-2 bg-success text-white rounded text-center">
                                 <p class="mb-0 font-weight-bold fs-16 mb-1">Total Admin</p>
-                                <p class="mb-0 fs-14">49</p>
+                                <p class="mb-0 fs-14">{{ $admin }}</p>
                             </div>
                         </div>
                         <div class="col-md-3 mb-2">
                             <div class="p-2 bg-info text-white rounded text-center">
                                 <p class="mb-0 font-weight-bold fs-16 mb-1">Total Manager</p>
-                                <p class="mb-0 fs-14">49</p>
+                                <p class="mb-0 fs-14">{{ $manager }}</p>
                             </div>
                         </div>
                         <div class="col-md-3 mb-2">
                             <div class="p-2 bg-warning text-white rounded text-center">
-                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Pegawai</p>
-                                <p class="mb-0 fs-14">49</p>
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Staff</p>
+                                <p class="mb-0 fs-14">{{ $staff }}</p>
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="p-2 bg-primary text-white rounded text-center">
                                 <p class="mb-0 font-weight-bold fs-16 mb-1">Total Security</p>
-                                <p class="mb-0 fs-14">49</p>
+                                <p class="mb-0 fs-14">{{ $security }}</p>
                             </div>
                         </div>
                     </div>

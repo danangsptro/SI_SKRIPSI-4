@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Purpose;
+use App\Models\Room;
 use DataTables;
 
 use Illuminate\Http\Request;
@@ -25,8 +27,6 @@ class VisitController extends Controller
             return $this->dataTable();
         }
 
-        $roles = Role::select('id', 'nama')->get();
-
         return view($this->pages . 'index', compact(
             'title',
             'desc'
@@ -41,5 +41,21 @@ class VisitController extends Controller
             ->rawColumns(['id'])
             ->addIndexColumn()
             ->toJson();
+    }
+
+    public function create()
+    {
+        $title = $this->title;
+        $desc  = 'Menu ini berisikan tambah Visit';
+
+        $rooms = Room::select('id', 'nama', 'status')->where('status', 1)->get();
+        $purposes = Purpose::select('id', 'tujuan')->get();
+
+        return view($this->pages . 'create', compact(
+            'title',
+            'desc',
+            'rooms',
+            'purposes'
+        ));
     }
 }

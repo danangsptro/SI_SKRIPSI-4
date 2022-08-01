@@ -34,9 +34,9 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('visit.index') }}">
             <i class="fas fa-fw fa-plus"></i>
-            <span>Request</span>
+            <span>Visit</span>
         </a>
     </li>
     <li class="nav-item">

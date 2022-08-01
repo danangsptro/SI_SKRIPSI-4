@@ -45,9 +45,9 @@ class RoomController extends Controller
             })
             ->editColumn('status', function($p) {
                 if ($p->status == 1) {
-                    $status = '<span class="badge badge-success py-1 px-3 fs-13">Aktif</span>';
+                    $status = '<span class="badge badge-success py-1 px-3 fs-12">Aktif</span>';
                 } else {
-                    $status = '<span class="badge badge-danger py-1 px-3 fs-13">Tidak Aktif</span>';
+                    $status = '<span class="badge badge-danger py-1 px-3 fs-12">Tidak Aktif</span>';
                 }
 
                 return $status;

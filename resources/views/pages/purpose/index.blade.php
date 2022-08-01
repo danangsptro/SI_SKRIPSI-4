@@ -14,8 +14,8 @@
                 <table id="dataTable" class="table data-table table-hover table-bordered" style="width:100%;">
                     <thead>
                         <tr>
-                            <th width="10%">No</th>
-                            <th width="80%">Tujuan</th>
+                            <th width="5%">No</th>
+                            <th width="85%">Tujuan</th>
                             <th width="10%">Action</th>
                         </tr>
                     </thead>
