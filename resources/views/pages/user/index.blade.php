@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', $title)
 @section('content')
 <div class="container-fluid">
     <div class="font-weight-bold text-black">
@@ -67,12 +68,12 @@
                 <table id="dataTable" class="table data-table table-hover table-bordered" style="width:100%;">
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th width="5%">No</th>
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Perusahaan</th>
-                            <th>Jabatan</th>
-                            <th>Role</th>
+                            <th width="15%">Jabatan</th>
+                            <th width="10%">Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>

@@ -9,7 +9,7 @@
 
     <!-- Title --> 
     <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ env('APP_NAME') }} | @yield('title')</title>
 
     <!-- CSS -->
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">

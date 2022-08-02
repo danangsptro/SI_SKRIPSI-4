@@ -58,4 +58,9 @@ class VisitController extends Controller
             'purposes'
         ));
     }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
 }
