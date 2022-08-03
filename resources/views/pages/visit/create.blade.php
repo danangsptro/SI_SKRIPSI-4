@@ -5,7 +5,7 @@
     <div class="card my-4">
         <h5 class="card-header bg-primary text-white font-weight-bold">Tambah Visit</h5>
         <div class="card-body">
-            <div id="alert">fjklds</div>
+            <div id="alert"></div>
             <div id="stepper1" class="bs-stepper">
                 <div class="bs-stepper-header mb-4 rounded" role="tablist" style="background: #F2F2F2">
                     <div class="step" data-target="#test-l-1">
