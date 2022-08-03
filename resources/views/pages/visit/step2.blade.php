@@ -21,7 +21,7 @@
                 <div class="row ml-0">
                     @foreach ($purposes as $i)
                     <div class="mt-2 ml-4 mr-4">
-                        <input type="radio" name="room_id" id="room_id" value="{{ $i->id }}" class="form-check-input">
+                        <input type="radio" name="purpose_id" id="purpose_id" value="{{ $i->id }}" class="form-check-input">
                         <label class="form-check-label">
                             {{ $i->tujuan }}
                         </label>

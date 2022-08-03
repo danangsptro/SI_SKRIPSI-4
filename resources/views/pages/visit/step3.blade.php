@@ -11,19 +11,19 @@
     </tr>
     <tr>
         <td>
-            <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14">
+            <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14" required>
         </td>
         <td>
-            <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14">
+            <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14" required>
         </td>
         <td>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="file_visitor1" name="ktp_visitor[]">
+                <input type="file" class="custom-file-input" id="file_visitor1" value="" name="ktp_visitor[]">
                 <label class="custom-file-label fileNameVisitor1" for="validatedCustomFile">Pilih File (pdf, jpeg, jpg, png)</label>
             </div>
         </td>
         <td>
-            <input type="text" name="perusahaan_visitor[]" placeholder="Masukan Perusahaan" class="form-control fs-14">
+            <input type="text" name="perusahaan_visitor[]" placeholder="Masukan Perusahaan" class="form-control fs-14" required>
         </td>
         <td>
             {{--  --}}
@@ -39,19 +39,19 @@
         $("#dynamicAddRemove").append(
             `<tr>
                 <td>
-                    <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14">
+                    <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14" required>
                 </td>
                 <td>
-                    <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14">
+                    <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14" required>
                 </td>
                 <td>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="file_visitor${i}" name="ktp_visitor[]">
+                        <input type="file" class="custom-file-input" id="file_visitor${i}" value="" name="ktp_visitor[]">
                         <label class="custom-file-label fileNameVisitor${i}" for="validatedCustomFile">Pilih File (pdf, jpeg, jpg, png)</label>
                     </div>
                 </td>
                 <td>
-                    <input type="text" name="perusahaan_visitor[]" placeholder="Masukan Perusahaan" class="form-control fs-14">
+                    <input type="text" name="perusahaan_visitor[]" placeholder="Masukan Perusahaan" class="form-control fs-14" required>
                 </td>
                 <td class="text-center">
                     <button type="button" class="btn btn-sm btn-danger remove-input-field"><i class="fa fa-trash mr-2"></i>Hapus</button>

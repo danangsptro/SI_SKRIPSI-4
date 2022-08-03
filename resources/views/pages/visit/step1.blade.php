@@ -33,11 +33,11 @@
     </div>
     <div class="col-md-6">
         <div class="row mb-2">
-            <label for="ktp" class="col-sm-3 text-right col-form-label font-weight-bold">KTP <span class="text-danger">*</span></label>
+            <label for="ktp" class="col-sm-3 text-right col-form-label font-weight-bold">Kartu Pengenal <span class="text-danger">*</span></label>
             <div class="col-sm-9">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="file1" name="ktp" required>
-                    <label class="custom-file-label fileName1" for="validatedCustomFile">Pilih File (pdf, jpeg, jpg, png)</label>
+                    <label class="custom-file-label fileName1" for="validatedCustomFile">(KTP, ID Card) format (pdf, jpeg, jpg, png)</label>
                     <div class="invalid-feedback">KTP tidak boleh kosong</div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="col-sm-9">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="file2" name="surat_tugas">
-                    <label class="custom-file-label fileName2" for="validatedCustomFile">Pilih File (pdf, jpeg, jpg, png)</label>
+                    <label class="custom-file-label fileName2" for="validatedCustomFile">format (pdf, jpeg, jpg, png)</label>
                     <div class="invalid-feedback">Surat Tugas tidak boleh kosong</div>
                 </div>
             </div>
@@ -57,7 +57,7 @@
             <div class="col-sm-9">
                 <div class="custom-file">
                     <input type="file" class="custom-file-input" id="file3" name="surat_izin">
-                    <label class="custom-file-label fileName3" for="validatedCustomFile">Pilih File (pdf, jpeg, jpg, png)</label>
+                    <label class="custom-file-label fileName3" for="validatedCustomFile">format (pdf, jpeg, jpg, png)</label>
                     <div class="invalid-feedback">Surat Izin Kerja tidak boleh kosong</div>
                 </div>
             </div>
