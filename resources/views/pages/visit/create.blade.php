@@ -134,6 +134,7 @@
                 contentType: false,
                 processData: false,
                 success : function(data) {
+                    $('#form').removeClass('was-validated');
                     $('#modalForm').modal('toggle');
                     $.confirm({
                         title: 'Success',
@@ -169,7 +170,6 @@
             });
             return false;
         }
-        $(this).addClass('was-validated');
     });
 
 </script>
