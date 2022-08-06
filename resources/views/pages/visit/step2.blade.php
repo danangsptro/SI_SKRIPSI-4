@@ -50,7 +50,7 @@
               <input type="time" name="waktu" id="waktu" class="form-control fs-14" autocomplete="off" required>
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row mt-3">
             <div class="col-sm-3"></div>
             <div class="col-sm-9">
                 <div class="row">

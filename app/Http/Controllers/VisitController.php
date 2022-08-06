@@ -93,6 +93,7 @@ class VisitController extends Controller
 
     public function store(Request $request)
     {
+        //* Validation
         $request->validate([
             'nama_pengunjung' => 'required',
             'email' => 'required',
@@ -103,6 +104,7 @@ class VisitController extends Controller
             'waktu' => 'required'
         ]);
 
+        //* Get Params
         $nama_pengunjung = $request->nama_pengunjung;
         $email = $request->email;
         $perusahaan = $request->perusahaan;

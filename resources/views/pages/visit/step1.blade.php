@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-2">
+        <div class="row mt-3">
             <div class="col-sm-3"></div>
             <div class="col-sm-9">
                 <button type="button" class="btn btn-block btn-success fs-14" onclick="stepper1.next()"><i class="fa fa-arrow-right mr-2"></i>Selanjutya</button>
