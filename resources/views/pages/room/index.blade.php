@@ -38,7 +38,8 @@
                     <thead>
                         <tr>
                             <th width="5%">No</th>
-                            <th width="70%">Nama</th>
+                            <th width="55%">Nama</th>
+                            <th width="15%">Total Kunjungan</th>
                             <th width="15%">Status</th>
                             <th width="10%">Action</th>
                         </tr>
@@ -81,8 +82,8 @@
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-9">
-                            <button type="submit" class="btn btn-success fs-14" id="btnSave" title="Simpan Data"><i class="bi bi-save m-r-8"></i>Simpan <span id="txtSave"></span></button>
-                            <a href="#" onclick="add()" class="m-l-5 text-danger font-weight-bold  fs-14" title="Kosongkan Form"><i class="bi bi-arrow-clockwise m-r-8"></i>Reset</a>
+                            <button type="submit" class="btn btn-success fs-14" id="btnSave" title="Simpan Data"><i class="fa fa-save m-r-8"></i>Simpan <span id="txtSave"></span></button>
+                            <a href="#" onclick="add()" class="m-l-5 text-danger font-weight-bold  fs-14" title="Kosongkan Form"><i class="fa fa-redo m-r-8"></i>Reset</a>
                         </div>
                     </div>
                 </form>
@@ -109,6 +110,7 @@
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', className: 'text-center', orderable: false, searchable: false},
             {data: 'nama', name: 'nama'},
+            {data: 'total_kunjungan', name: 'total_kunjungan', className: 'text-center'},
             {data: 'status', name: 'status', className: 'text-center'},
             {data: 'action', name: 'action', className: 'text-center', orderable: false, searchable: false}
         ]

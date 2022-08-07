@@ -24,4 +24,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('room', 'RoomController');
     Route::resource('purpose', 'PurposeController');
     Route::resource('visit', 'VisitController');
+
+    // Profile
+    Route::get('profile', 'ProfileController@index')->name('profile.index');
+    Route::post('profile/update/{id}', 'ProfileController@update')->name('profile.update');
+    Route::post('/profile/update-password/{id}', 'ProfileController@updatePassword')->name('profile.updatePassword');
 });

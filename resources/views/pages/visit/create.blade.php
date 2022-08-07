@@ -31,6 +31,7 @@
                 </div>
                 <div class="bs-stepper-content">
                     <form id="form" class="fs-14 needs-validation" novalidate method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="is_staff" value="{{ $dataVisitStaff ? 1 : null }}">
                         @csrf
                         <!-- Request -->
                         <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">

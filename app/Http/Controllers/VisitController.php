@@ -7,8 +7,10 @@ use DataTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 // Models
+use App\User;
 use App\Models\Room;
 use App\Models\Visit;
 use App\Models\Purpose;
@@ -47,7 +49,7 @@ class VisitController extends Controller
 
                 return $p->status == 0 ? $delete : '-';
             })
-            ->editColumn('nama_pengunjung', function($p) {
+            ->editColumn('nama_pengunjung', function ($p) {
                 return "<a href='" . route('visit.show', $p->id) . "' class='text-primary' title='Menampilkan Data'>" . $p->nama_pengunjung . "</a>";
             })
             ->addColumn('tgl_request', function ($p) {
@@ -62,7 +64,7 @@ class VisitController extends Controller
             ->addColumn('jumlah', function ($p) {
                 $totalPeople = $p->people->count();
 
-                return $totalPeople+1 . ' Orang';
+                return $totalPeople + 1 . ' Orang';
             })
             ->editColumn('status', function ($p) {
                 $belum = '<span class="badge badge-danger py-1 px-3 fs-12">Belum</span>';
@@ -83,11 +85,21 @@ class VisitController extends Controller
         $rooms = Room::select('id', 'nama', 'status')->where('status', 1)->get();
         $purposes = Purpose::select('id', 'tujuan')->get();
 
+        //* Check Role
+        $user_id = Auth::user()->id;
+        $role_id = Auth::user()->role->id;
+
+        $dataVisitStaff = [];
+        if ($role_id == 3) {
+            $dataVisitStaff = User::find($user_id);
+        }
+
         return view($this->pages . 'create', compact(
             'title',
             'desc',
             'rooms',
-            'purposes'
+            'purposes',
+            'dataVisitStaff'
         ));
     }
 
@@ -121,6 +133,7 @@ class VisitController extends Controller
         $jabatan_visitor = $request->jabatan_visitor;
         $ktp_visitor = $request->ktp_visitor;
         $perusahaan_visitor = $request->perusahaan_visitor;
+        $is_staff = $request->is_staff;
 
         /* Tahapan
          * 1. visits
@@ -132,9 +145,13 @@ class VisitController extends Controller
 
         try {
             //* Tahap 1
-            $fileKTP  = $request->file('ktp');
-            $fileNameKTP = time() . "." . $fileKTP->getClientOriginalName();  //TODO: Save KTP to storage
-            $fileKTP->move("file/ktp/", $fileNameKTP);
+            if ($is_staff) {
+                $fileNameKTP = Auth::user()->ktp;
+            } else { 
+                $fileKTP  = $request->file('ktp');
+                $fileNameKTP = time() . "." . $fileKTP->getClientOriginalName();  //TODO: Save KTP to storage
+                $fileKTP->move("file/ktp/", $fileNameKTP);
+            }
 
             if ($surat_tugas) {
                 $fileSuratTugas     = $request->file('surat_tugas');

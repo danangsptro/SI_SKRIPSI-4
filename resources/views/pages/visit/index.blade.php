@@ -22,7 +22,7 @@
                             <th width="15%">Tanggal Visit</th>
                             <th width="10%">Jumlah</th>
                             <th width="10%">Status</th>
-                            <th width="5%"></th>
+                            <th width="5%">Action</th>
                         </tr>
                     </thead>
                 </table>

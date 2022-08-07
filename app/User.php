@@ -12,7 +12,7 @@ class User extends Authenticatable
     use Notifiable;
 
     protected $table = 'users';
-    protected $fillable = ['id', 'role_id', 'nama', 'email', 'perusahaan', 'departemen', 'jabatan', 'no_telp'];
+    protected $fillable = ['id', 'role_id', 'password', 'nama', 'email', 'perusahaan', 'departemen', 'jabatan', 'no_telp', 'ktp'];
 
     public function role()
     {
@@ -21,7 +21,7 @@ class User extends Authenticatable
 
     public static function queryTable($role_id)
     {
-        $data = User::select('id', 'role_id', 'nama', 'email', 'perusahaan', 'departemen', 'jabatan', 'no_telp')
+        $data = User::select('id', 'role_id', 'nama', 'email', 'perusahaan', 'departemen', 'jabatan', 'no_telp', 'ktp')
             ->when($role_id != 0, function ($q) use ($role_id) {
                 return $q->where('role_id', $role_id);
             })->get();

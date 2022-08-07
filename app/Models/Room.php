@@ -18,4 +18,9 @@ class Room extends Model
 
         return $data;
     }
+
+    public function visited()
+    {
+        return $this->hasMany(VisitRoom::class, 'room_id', 'id');
+    }
 }

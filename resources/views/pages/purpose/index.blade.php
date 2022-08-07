@@ -48,8 +48,8 @@
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-9">
-                            <button type="submit" class="btn btn-success fs-14" id="btnSave" title="Simpan Data"><i class="bi bi-save m-r-8"></i>Simpan <span id="txtSave"></span></button>
-                            <a href="#" onclick="add()" class="m-l-5 text-danger font-weight-bold  fs-14" title="Kosongkan Form"><i class="bi bi-arrow-clockwise m-r-8"></i>Reset</a>
+                            <button type="submit" class="btn btn-success fs-14" id="btnSave" title="Simpan Data"><i class="fa fa-save m-r-8"></i>Simpan <span id="txtSave"></span></button>
+                            <a href="#" onclick="add()" class="m-l-5 text-danger font-weight-bold  fs-14" title="Kosongkan Form"><i class="fa fa-redo m-r-8"></i>Reset</a>
                         </div>
                     </div>
                 </form>

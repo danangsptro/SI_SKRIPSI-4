@@ -43,7 +43,7 @@ class RoomController extends Controller
 
                 return $edit . $delete;
             })
-            ->editColumn('status', function($p) {
+            ->editColumn('status', function ($p) {
                 if ($p->status == 1) {
                     $status = '<span class="badge badge-success py-1 px-3 fs-12">Aktif</span>';
                 } else {
@@ -51,7 +51,9 @@ class RoomController extends Controller
                 }
 
                 return $status;
-                
+            })
+            ->addColumn('total_kunjungan', function ($p) {
+                return $p->visited->count() . ' Kali';
             })
             ->rawColumns(['id', 'action', 'status'])
             ->addIndexColumn()

@@ -61,7 +61,10 @@ class UserController extends Controller
             ->editColumn('role_id', function ($p) {
                 return $p->role->nama;
             })
-            ->rawColumns(['id', 'action'])
+            ->editColumn('ktp', function ($p) {
+                return '<a href="' . asset('file/ktp/' . $p->ktp) . '" target="blank" class="text-info" title="Lihat File"><i class="fa fa-file"></i></a>';
+            })
+            ->rawColumns(['id', 'action', 'ktp'])
             ->addIndexColumn()
             ->toJson();
     }
@@ -78,17 +81,22 @@ class UserController extends Controller
         $request->validate([
             'role_id' => 'required',
             'nama' => 'required|max:50',
-            'email' => 'required|max:100|unique:users,email',
+            // 'email' => 'required|max:100|unique:users,email',
             'perusahaan' => 'required',
             'jabatan' => 'required',
             'no_telp' => 'required',
             'departemen' => 'required'
         ]);
 
+        $input = $request->all();
+        $input = $request->except(['ktp']);
         $password = Hash::make('123456789');
 
-        $input = $request->all();
-        User::create($input + ['password' => $password]);
+        $fileKTP  = $request->file('ktp');
+        $fileNameKTP = time() . "." . $fileKTP->getClientOriginalName();  //TODO: Save KTP to storage
+        $fileKTP->move("file/ktp/", $fileNameKTP);
+
+        User::create($input + ['password' => $password, 'ktp' => $fileNameKTP]);
 
         return response()->json(['message' => "Berhasil menyiman data " . $this->title]);
     }
@@ -106,9 +114,19 @@ class UserController extends Controller
         ]);
 
         $input = $request->all();
+        $input = $request->except(['ktp']);
+        $data  = User::find($id);
 
-        $data = User::find($id);
-        $data->update($input);
+        $ktp = $request->ktp;
+        if ($ktp) {
+            $fileKTP  = $request->file('ktp');
+            $fileNameKTP = time() . "." . $fileKTP->getClientOriginalName();  //TODO: Save KTP to storage
+            $fileKTP->move("file/ktp/", $fileNameKTP);
+        } else {
+            $fileNameKTP = $data->ktp;
+        }
+
+        $data->update($input + ['ktp' => $fileNameKTP]);
 
         return response()->json(['message' => "Berhasil memperbaharui data " . $this->title]);
     }

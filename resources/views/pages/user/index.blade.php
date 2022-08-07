@@ -74,6 +74,7 @@
                             <th>Perusahaan</th>
                             <th width="15%">Jabatan</th>
                             <th width="10%">Role</th>
+                            <th width="5%">KTP</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -143,11 +144,21 @@
                           <input type="text" name="jabatan" id="jabatan" class="form-control fs-14" autocomplete="off" required>
                         </div>
                     </div>
+                    <div class="row mb-2">
+                        <label for="ktp" class="col-sm-3 col-form-label font-weight-bold">ID Card <span class="text-danger" id="required_ktp">*</span></label>
+                        <div class="col-sm-9">
+                            <div class="custom-file">
+                                <input type="file" re class="custom-file-input" id="file" name="ktp" required>
+                                <label class="custom-file-label fileName" for="validatedCustomFile">format (pdf, jpeg, jpg, png)</label>
+                                <div class="invalid-feedback">KTP tidak boleh kosong</div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-9">
-                            <button type="submit" class="btn btn-success fs-14" id="btnSave" title="Simpan Data"><i class="bi bi-save m-r-8"></i>Simpan <span id="txtSave"></span></button>
-                            <a href="#" onclick="add()" class="m-l-5 text-danger font-weight-bold  fs-14" title="Kosongkan Form"><i class="bi bi-arrow-clockwise m-r-8"></i>Reset</a>
+                            <button type="submit" class="btn btn-success fs-14" id="btnSave" title="Simpan Data"><i class="fa fa-save m-r-8"></i>Simpan <span id="txtSave"></span></button>
+                            <a href="#" onclick="add()" class="m-l-5 text-danger font-weight-bold  fs-14" title="Kosongkan Form"><i class="fa fa-redo m-r-8"></i>Reset</a>
                         </div>
                     </div>
                 </form>
@@ -178,9 +189,15 @@
             {data: 'perusahaan', name: 'perusahaan'},
             {data: 'jabatan', name: 'jabatan'},
             {data: 'role_id', name: 'role_id'},
+            {data: 'ktp', name: 'ktp', className: 'text-center'},
             {data: 'action', name: 'action', className: 'text-center', orderable: false, searchable: false}
         ]
     });
+
+    $('#file').on('change',function(e){
+        var fileName = e.target.files[0].name;
+        $(this).next('.fileName').html(fileName);
+    })
 
     pressOnChange();
     function pressOnChange(){
@@ -197,6 +214,8 @@
         $('#form').trigger('reset');
         $('input[name=_method]').val('POST');
         $('#txtTitle').html('Tambah');
+        $('#file').attr('required', true)
+        $('#required_ktp').show();
         $('#txtSave').html('');
         $('#alert').html('');
     }
@@ -210,6 +229,8 @@
             $('input[name=_method]').val('PATCH');
             $('#alert').html('');
             $('#loading').hide();
+            $('#required_ktp').hide();
+            $('#file').attr('required', false)
             openForm();
             $('#id').val(data.id);
             $('#nama').val(data.nama);
@@ -229,20 +250,28 @@
         }else{    
             $('#loading').show();
             $('#alert').html('');
-            $('#btnSave').attr('disabled', true);
+            // $('#btnSave').attr('disabled', true);
             
             url = (save_method == 'add') ? "{{ route('user.store') }}" : "{{ route('user.update', ':id') }}".replace(':id', $('#id').val());
-            $.post(url, $(this).serialize(), function(data){
-                $('#alert').html("<div class='alert alert-success alert-dismissible' role='alert'><strong>Sukses!</strong> " + data.message + "</div>");
-                table.api().ajax.reload();
-                if(save_method == 'add') $('#form').trigger('reset');
-                $('#form').removeClass('was-validated');
-            },'json').fail(function(data){
-                err = ''; respon = data.responseJSON;
-                $.each(respon.errors, function(index, value){
-                    err += "<li>" + value +"</li>";
-                });
-                $('#alert').html("<div class='alert alert-danger alert-dismissible' role='alert'>" + respon.message + "<ol class='pl-3 m-0'>" + err + "</ol></div>");
+            $.ajax({
+                url : url,
+                type : (save_method == 'add') ? 'POST' : 'POST',
+                data: new FormData(($(this)[0])),
+                contentType: false,
+                processData: false,
+                success : function(data) {
+                    $('#alert').html("<div class='alert alert-success alert-dismissible' role='alert'><strong>Sukses!</strong> " + data.message + "</div>");
+                    table.api().ajax.reload();
+                    if(save_method == 'add') $('#form').trigger('reset');
+                    $('#form').removeClass('was-validated');  
+                },
+                error : function(data){
+                    err = ''; respon = data.responseJSON;
+                    $.each(respon.errors, function(index, value){
+                        err += "<li>" + value +"</li>";
+                    });
+                    $('#alert').html("<div class='alert alert-danger alert-dismissible' role='alert'>" + respon.message + "<ol class='pl-3 m-0'>" + err + "</ol></div>");
+                }
             }).always(function(){
                 $('#loading').hide();
                 $('#btnSave').removeAttr('disabled');
