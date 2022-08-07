@@ -13,9 +13,9 @@
         <div class="card-body">
             <div class="col-md-6 px-0">
                 <div class="row mb-2">
-                    <label for="status_filter" class="col-form-label col-md-2 text-right font-weight-bolder">Status </label>
+                    <label for="status_filter" class="col-form-label col-md-2 text-right font-weight-bolder fs-14">Status </label>
                     <div class="col-sm-8">
-                        <select class="fs-14 form-control r-0 light" id="status_filter" name="status_filter">
+                        <select class="fs-14 form-control" id="status_filter" name="status_filter">
                             <option value="99">Semua</option>
                             <option value="1">Aktif</option>
                             <option value="0">Tidak Aktif</option>

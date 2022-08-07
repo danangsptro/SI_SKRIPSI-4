@@ -13,4 +13,9 @@ class VisitRoom extends Model
     {
         return $this->belongsTo(Visit::class, 'visit_id');
     }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id');
+    }
 }

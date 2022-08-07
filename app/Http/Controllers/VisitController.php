@@ -28,20 +28,42 @@ class VisitController extends Controller
         $title = $this->title;
         $desc  = $this->desc;
 
-        //* DataTable
-        if ($request->ajax()) {
-            return $this->dataTable();
+        $role_id = Auth::user()->role_id;
+        $email   = Auth::user()->email;
+
+        //* Check role for create data
+        $isAdd = 0;
+        if ($role_id == 3 || $role_id == 4) {
+            $isAdd = 1;
         }
+
+        //* DataTable
+        $status    = $request->status_filter;
+        $tgl_awal  = $request->tgl_awal;
+        $tgl_akhir = $request->tgl_akhir;
+        if ($request->ajax()) {
+            return $this->dataTable($role_id, $email, $status, $tgl_awal, $tgl_akhir);
+        }
+
+        //* Get total status
+        $disetujui = Visit::where('status', 1)->count();
+        $ditolak   = Visit::where('status', 2)->count();
+        $pending   = Visit::where('status', 0)->count();
 
         return view($this->pages . 'index', compact(
             'title',
-            'desc'
+            'desc',
+            'role_id',
+            'isAdd',
+            'disetujui',
+            'ditolak',
+            'pending'
         ));
     }
 
-    public function dataTable()
+    public function dataTable($role_id, $email, $status, $tgl_awal, $tgl_akhir)
     {
-        $data = Visit::queryTable();
+        $data = Visit::queryTable($role_id, $email, $status, $tgl_awal, $tgl_akhir);
 
         return DataTables::of($data)
             ->addColumn('action', function ($p) {
@@ -67,10 +89,17 @@ class VisitController extends Controller
                 return $totalPeople + 1 . ' Orang';
             })
             ->editColumn('status', function ($p) {
-                $belum = '<span class="badge badge-danger py-1 px-3 fs-12">Belum</span>';
+                $belum = '<span class="badge badge-warning py-1 px-3 fs-12">Pending</span>';
                 $sudah = '<span class="badge badge-success py-1 px-3 fs-12">Sudah</span>';
+                $ditolak = '<span class="badge badge-danger py-1 px-3 fs-12">Ditolak</span>';
 
-                return $p->status == 0 ? $belum : $sudah;
+                if ($p->status == 0) {
+                    return $belum;
+                } elseif ($p->status == 1) {
+                    return $sudah;
+                } elseif ($p->status == 2) {
+                    return $ditolak;
+                }
             })
             ->rawColumns(['id', 'action', 'nama_pengunjung', 'status'])
             ->addIndexColumn()
@@ -88,7 +117,6 @@ class VisitController extends Controller
         //* Check Role
         $user_id = Auth::user()->id;
         $role_id = Auth::user()->role->id;
-
         $dataVisitStaff = [];
         if ($role_id == 3) {
             $dataVisitStaff = User::find($user_id);
@@ -147,7 +175,7 @@ class VisitController extends Controller
             //* Tahap 1
             if ($is_staff) {
                 $fileNameKTP = Auth::user()->ktp;
-            } else { 
+            } else {
                 $fileKTP  = $request->file('ktp');
                 $fileNameKTP = time() . "." . $fileKTP->getClientOriginalName();  //TODO: Save KTP to storage
                 $fileKTP->move("file/ktp/", $fileNameKTP);
@@ -197,7 +225,7 @@ class VisitController extends Controller
 
             for ($k = 0; $k < $getTotalArray; $k++) {
                 if (isset($ktp_visitor[$k])) {
-                    $fileKTPVisitor  = isset($request->file('ktp_visitor')[$k]);
+                    $fileKTPVisitor  = $request->file('ktp_visitor')[$k];
                     $fileNameKTPVisitor = time() . "." . $fileKTPVisitor->getClientOriginalName();  //TODO: Save KTP to storage
                     $fileKTPVisitor->move("file/ktp/", $fileNameKTPVisitor);
                 }
@@ -214,6 +242,7 @@ class VisitController extends Controller
             }
         } catch (\Throwable $th) {
             DB::rollback(); //* DB Transaction Failed
+            dd($th);
             return response()->json(['message' => "Terjadi kesalahan, silahkan hubungi administrator"], 500);
         }
 
@@ -222,6 +251,44 @@ class VisitController extends Controller
         return response()->json([
             'message' => "Data " . $this->title . " berhasil tersimpan."
         ]);
+    }
+
+    public function show($id)
+    {
+        $title = $this->title;
+        $desc  = 'Menu ini menampilkan data Visit';
+        
+        $role_id = Auth::user()->role->id;
+
+        $data  = Visit::find($id);
+        $rooms = VisitRoom::select('id', 'room_id', 'visit_id')->where('visit_id', $id)->get();
+        $peoples = VisitPeople::select('id', 'visit_id', 'nama', 'jabatan', 'perusahaan', 'ktp')->where('visit_id', $id)->get();
+
+        return view($this->pages . 'show', compact(
+            'title',
+            'desc',
+            'data',
+            'rooms',
+            'peoples',
+            'role_id'
+        ));
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $request->validate([
+            'status' => 'required',
+            'ket_status' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $data = Visit::find($id);
+        $data->update($input);
+
+        return redirect()
+            ->route('visit.show', $id)
+            ->withSuccess("Selamat! Data Visit berhasil diperbaharui.");
     }
 
     public function destroy($id)

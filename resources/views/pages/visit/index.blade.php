@@ -6,9 +6,71 @@
         <p class="fs-30 mb-0">{{ $title }}</p>
         <span>{{ $desc }}</span>
     </div>
+    @if ($isAdd)
     <div class="mt-4 text-right">
         <a href="{{ route('visit.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus mr-2"></i>Tambah Data</a>
-    </div>  
+    </div> 
+    @endif
+    <div class="card my-2">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6 px-0">
+                    <div class="row mb-2">
+                        <label for="status_filter" class="col-form-label col-md-2 text-right font-weight-bolder fs-14">Status </label>
+                        <div class="col-sm-8">
+                            <select class="fs-14 form-control fs-14 r-0 light" id="status_filter" name="status_filter">
+                                <option value="99">Semua</option>
+                                <option value="0">Pending</option>
+                                <option value="1">Disetujui</option>
+                                <option value="2">Ditolak</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label class="col-form-label col-md-2 text-right font-weight-bolder fs-14">Tanggal </label>
+                        <div class="col-sm-8">
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <input type="date" placeholder="MM/DD/YYYY" value="" name="tgl_awal" id="tgl_awal" class="form-control fs-14" autocomplete="off"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="date" placeholder="MM/DD/YYYY" value="" name="tgl_akhir" id="tgl_akhir" class="form-control fs-14" autocomplete="off"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-sm-2"></div>
+                        <div class="col-sm-8">
+                            <button class="btn btn-success btn-sm" onclick="pressOnChange()"><i class="fa fa-filter mr-2"></i>Filter</button>
+                        </div> 
+                    </div>
+                </div>
+                <div class="col-md-6 px-0">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 mb-2">
+                            <div class="p-2 bg-success text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Disetujui</p>
+                                <p class="mb-0 fs-14">{{ $disetujui }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <div class="p-2 bg-warning text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Pending</p>
+                                <p class="mb-0 fs-14">{{ $pending }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <div class="p-2 bg-danger text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Ditolak</p>
+                                <p class="mb-0 fs-14">{{ $ditolak }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
     <div class="card my-2">
         <div class="card-body">
             <div class="table-responsive">
@@ -43,7 +105,9 @@
             url: "{{ route('visit.index') }}",
             method: 'GET',
             data: function (data) {
-                data.role_id_filter = $('#role_id_filter').val();
+                data.status_filter = $('#status_filter').val();
+                data.tgl_awal = $('#tgl_awal').val();
+                data.tgl_akhir = $('#tgl_akhir').val();
             }
         },
         columns: [
@@ -57,6 +121,11 @@
             {data: 'action', name: 'action', className: 'text-center', orderable: false, searchable: false}
         ]
     });
+
+    pressOnChange();
+    function pressOnChange(){
+        table.api().ajax.reload();
+    }
 
     function remove(id){
         $.confirm({

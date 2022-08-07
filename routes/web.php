@@ -21,9 +21,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('user', 'UserController');
+    
     Route::resource('room', 'RoomController');
+     
     Route::resource('purpose', 'PurposeController');
+
     Route::resource('visit', 'VisitController');
+    Route::post('visit/update-status/{id}', 'VisitController@updateStatus')->name('visit.updateStatus');
 
     // Profile
     Route::get('profile', 'ProfileController@index')->name('profile.index');

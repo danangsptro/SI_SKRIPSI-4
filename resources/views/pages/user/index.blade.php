@@ -14,9 +14,9 @@
             <div class="row">
                 <div class="col-md-6 px-0">
                     <div class="row mb-2">
-                        <label for="role_id_filter" class="col-form-label col-md-2 text-right font-weight-bolder">Role </label>
+                        <label for="role_id_filter" class="col-form-label col-md-2 text-right font-weight-bolder fs-14">Role </label>
                         <div class="col-sm-8">
-                            <select class="fs-14 form-control fs-14 r-0 light" id="role_id_filter" name="role_id_filter">
+                            <select class="fs-14 form-control" id="role_id_filter" name="role_id_filter">
                                 <option value="0">Semua</option>
                                 @foreach ($roles as $i)
                                     <option value="{{ $i->id }}">{{ $i->nama }}</option>
