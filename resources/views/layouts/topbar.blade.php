@@ -4,14 +4,13 @@
     </button>
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown no-arrow mx-1">
-            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-danger badge-counter">+<span id="getNofitVisit"></span></span>
             </a>
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                    Alerts Center
+                    Notifikasi Visit
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                     <div class="mr-3">
@@ -20,11 +19,10 @@
                         </div>
                     </div>
                     <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                        <span class="font-weight-bold">Terdapat <span id="getNofitVisit1"></span> data visit belum disetujui.</span>
                     </div>
                 </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                <a class="dropdown-item text-center small text-gray-500" href="{{ route('visit.index') }}">Lihat data visit</a>
             </div>
         </li>
         <div class="topbar-divider d-none d-sm-block"></div>
@@ -47,10 +45,9 @@
         </li>
     </ul>
 </nav>
- <!-- Logout Modal-->
- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
- aria-hidden="true">
- <div class="modal-dialog" role="document">
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
      <div class="modal-content">
          <div class="modal-header">
              <h5 class="modal-title fs-20 text-black font-weight-bold" id="exampleModalLabel">Ready to Leave?</h5>
@@ -67,3 +64,18 @@
      </div>
  </div>
 </div>
+@push('script')
+<script type="text/javascript">
+    ajaxCall();
+    function ajaxCall(){
+        url = "{{ route('getNofitVisit') }}";
+        $.get(url, function(data){
+            $('#getNofitVisit').html(data);
+            $('#getNofitVisit1').html(data);
+        }, 'JSON'); 
+    }
+
+    var interval = 1000 * 60 * 0.1;
+    setInterval(ajaxCall(), interval);
+</script>
+@endpush

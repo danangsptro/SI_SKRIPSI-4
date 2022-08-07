@@ -9,6 +9,13 @@
         display: none;
     } 
 
+    .top-bar-login{
+        display: none;
+    }
+    .mt-10-m{
+        margin-top: 40px;
+    }
+
     .mb-5-m {
         margin-bottom: 8px;
     }

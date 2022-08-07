@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// Models
+use App\Models\Visit;
 
 class HomeController extends Controller
 {
@@ -14,5 +15,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function getNotifVisit()
+    {
+        $data = Visit::where('status', 0)->count();
+
+        return $data;
     }
 }

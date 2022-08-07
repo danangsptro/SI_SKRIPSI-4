@@ -242,7 +242,6 @@ class VisitController extends Controller
             }
         } catch (\Throwable $th) {
             DB::rollback(); //* DB Transaction Failed
-            dd($th);
             return response()->json(['message' => "Terjadi kesalahan, silahkan hubungi administrator"], 500);
         }
 
