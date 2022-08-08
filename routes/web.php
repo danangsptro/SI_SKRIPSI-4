@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
     // Visit
     Route::resource('visit', 'VisitController');
     Route::post('visit/update-status/{id}', 'VisitController@updateStatus')->name('visit.updateStatus');
+    Route::get('visit/cetak-pdf/{id}', 'VisitController@cetakPDF')->name('visit.cetakPDF');
 
     // Profile
     Route::get('profile', 'ProfileController@index')->name('profile.index');

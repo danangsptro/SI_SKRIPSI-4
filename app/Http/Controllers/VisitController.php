@@ -296,4 +296,22 @@ class VisitController extends Controller
 
         return response()->json(['message' => "Berhasil menghapus data " . $this->title]);
     }
+
+    public function cetakPDF($id)
+    {
+        $data  = Visit::find($id);
+        $rooms = VisitRoom::select('id', 'room_id', 'visit_id')->where('visit_id', $id)->get();
+        $peoples = VisitPeople::select('id', 'visit_id', 'nama', 'jabatan', 'perusahaan', 'ktp')->where('visit_id', $id)->get();
+
+        $pdf = app('dompdf.wrapper');
+        $pdf->getDomPDF()->set_option("enable_php", true);
+        $pdf->setPaper('portrait');
+        $pdf->loadView('pages.visit.visit-pdf', compact(
+            'data',
+            'peoples',
+            'rooms'
+        ));
+
+        return $pdf->stream($data->nama_pengunjung . '-' . $data->tanggal . ".pdf");
+    }
 }

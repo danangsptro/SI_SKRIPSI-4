@@ -47,6 +47,12 @@
                                 <a href="{{ asset('file/surat_tugas/' . $data->surat_tugas) }}" class="text-info" target="blank">{{ $data->surat_tugas ? $data->surat_tugas : '-' }}</a>
                             </label>
                         </div>
+                        <div class="row">
+                            <label class="col-md-4"></label>
+                            <label class="col-md-8 fs-14">
+                                <a href="{{ route('visit.cetakPDF', $data->id) }}" target="blank" class="btn btn-sm btn-primary"><i class="fa fa-file-pdf mr-2"></i>Cetak File</a>
+                            </label>
+                        </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="row">
