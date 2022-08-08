@@ -19,14 +19,19 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
+    // Utility
     Route::get('get-notif-visit', 'HomeController@getNotifVisit')->name('getNofitVisit');
 
+    // User
     Route::resource('user', 'UserController');
 
+    // Room
     Route::resource('room', 'RoomController');
      
+    // Purpose
     Route::resource('purpose', 'PurposeController');
 
+    // Visit
     Route::resource('visit', 'VisitController');
     Route::post('visit/update-status/{id}', 'VisitController@updateStatus')->name('visit.updateStatus');
 

@@ -46,9 +46,9 @@ class VisitController extends Controller
         }
 
         //* Get total status
+        $pending   = Visit::where('status', 0)->count();
         $disetujui = Visit::where('status', 1)->count();
         $ditolak   = Visit::where('status', 2)->count();
-        $pending   = Visit::where('status', 0)->count();
 
         return view($this->pages . 'index', compact(
             'title',
