@@ -80,9 +80,15 @@
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <td class="p-1 text-black text-center">1.</td>
+                <td class="p-1 text-black">{{ $data->nama_pengunjung }}</td>
+                <td class="p-1 text-black">{{ $data->jabatan }}</td>
+                <td class="p-1 text-black">{{ $data->perusahaan }}</td>
+            </tr>
             @foreach ($peoples as $key => $p)
                 <tr>
-                    <td class="p-1 text-black text-center">{{ $key + 1 }}.</td>
+                    <td class="p-1 text-black text-center">{{ $key + 2 }}.</td>
                     <td class="p-1 text-black">{{ $p->nama }}</td>
                     <td class="p-1 text-black">{{ $p->jabatan }}</td>
                     <td class="p-1 text-black">{{ $p->perusahaan }}</td>

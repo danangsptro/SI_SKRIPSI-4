@@ -11,7 +11,7 @@
     </tr>
     <tr>
         <td>
-            <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14" required>
+            <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14">
         </td>
         <td>
             <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14" required>
