@@ -116,16 +116,13 @@
                 <td colspan="4" class="text-center text-black p-1 bg-gray-300 font-weight-bold">Approval Signatures</td>
             </tr>
             <tr>
-                <td colspan="2" class="p-1 text-black text-center bg-gray-200">Requestor</td>
-                <td colspan="2" class="p-1 text-black text-center bg-gray-200">Data Center Manager</td>
+                <td colspan="4" class="p-1 text-black text-center bg-gray-200">Data Center Manager</td>
             </tr>
             <tr>
-                <td colspan="2" class="h-10"></td>
-                <td colspan="2" class="h-10"></td>
+                <td colspan="4" class="h-10"></td>
             </tr>
             <tr>
-                <td colspan="2" class="p-1 text-black">Date: </td>
-                <td colspan="2" class="p-1 text-black">Date: </td>
+                <td colspan="4" class="p-1 text-black">Date: </td>
             </tr>
         </tbody>
     </table>
