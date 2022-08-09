@@ -6,11 +6,9 @@
         <p class="fs-30 mb-0">{{ $title }}</p>
         <span>{{ $desc }}</span>
     </div>
-    @if ($isAdd)
     <div class="mt-4 text-right">
         <a href="{{ route('visit.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus mr-2"></i>Tambah Data</a>
     </div> 
-    @endif
     <div class="card my-2">
         <div class="card-body">
             <div class="row">
