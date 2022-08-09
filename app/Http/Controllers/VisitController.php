@@ -31,12 +31,6 @@ class VisitController extends Controller
         $role_id = Auth::user()->role_id;
         $email   = Auth::user()->email;
 
-        //* Check role for create data
-        $isAdd = 0;
-        if ($role_id == 3 || $role_id == 4) {
-            $isAdd = 1;
-        }
-
         //* DataTable
         $status    = $request->status_filter;
         $tgl_awal  = $request->tgl_awal;
@@ -46,15 +40,14 @@ class VisitController extends Controller
         }
 
         //* Get total status
-        $pending   = Visit::where('status', 0)->count();
-        $disetujui = Visit::where('status', 1)->count();
-        $ditolak   = Visit::where('status', 2)->count();
+        $pending   = Visit::where('status', 0)->when($role_id == 3, function ($q) use ($email) { return $q->where('email', $email); })->count();
+        $disetujui = Visit::where('status', 1)->when($role_id == 3, function ($q) use ($email) { return $q->where('email', $email); })->count();
+        $ditolak   = Visit::where('status', 2)->when($role_id == 3, function ($q) use ($email) { return $q->where('email', $email); })->count();
 
         return view($this->pages . 'index', compact(
             'title',
             'desc',
             'role_id',
-            'isAdd',
             'disetujui',
             'ditolak',
             'pending'
@@ -230,7 +223,7 @@ class VisitController extends Controller
                         $fileNameKTPVisitor = time() . "." . $fileKTPVisitor->getClientOriginalName();  //TODO: Save KTP to storage
                         $fileKTPVisitor->move("file/ktp/", $fileNameKTPVisitor);
                     }
-    
+
                     $dataVisitPeople = [
                         'visit_id' => $visit->id,
                         'nama' => $nama_visitor[$k],
@@ -238,7 +231,7 @@ class VisitController extends Controller
                         'perusahaan' => $perusahaan_visitor[$k],
                         'ktp' => isset($ktp_visitor[$k]) ? $fileNameKTPVisitor : null
                     ];
-    
+
                     VisitPeople::create($dataVisitPeople);
                 }
             }
@@ -258,7 +251,7 @@ class VisitController extends Controller
     {
         $title = $this->title;
         $desc  = 'Menu ini menampilkan data Visit';
-        
+
         $role_id = Auth::user()->role->id;
 
         $data  = Visit::find($id);
