@@ -121,7 +121,7 @@
             <tr>
                 <td colspan="4" class="h-10 text-center">
                     @if ($data->status == 1)
-                        <img class="img-fluid" src="{{ public_path('images/ttd.jpeg') }}" width="200" alt="TTD">
+                        <img class="img-fluid" src="{{ public_path('images/ttd.png') }}" width="200" alt="TTD">
                     @endif
                 </td>
             </tr>
