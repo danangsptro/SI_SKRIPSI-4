@@ -223,7 +223,7 @@ class VisitController extends Controller
             //* Tahap 3
             $getTotalArray = count($request->nama_visitor);
 
-            if ($getTotalArray != 0) {
+            if ($request->nama_visitor[0] != null) {
                 for ($k = 0; $k < $getTotalArray; $k++) {
                     if (isset($ktp_visitor[$k])) {
                         $fileKTPVisitor  = $request->file('ktp_visitor')[$k];
