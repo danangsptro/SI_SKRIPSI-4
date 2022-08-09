@@ -119,7 +119,11 @@
                 <td colspan="4" class="p-1 text-black text-center bg-gray-200">Data Center Manager</td>
             </tr>
             <tr>
-                <td colspan="4" class="h-10"></td>
+                <td colspan="4" class="h-10 text-center">
+                    @if ($data->status == 1)
+                        <img class="img-fluid" src="{{ public_path('images/ttd.jpeg') }}" width="200" alt="TTD">
+                    @endif
+                </td>
             </tr>
             <tr>
                 <td colspan="4" class="p-1 text-black">Date: </td>
