@@ -223,22 +223,24 @@ class VisitController extends Controller
             //* Tahap 3
             $getTotalArray = count($request->nama_visitor);
 
-            for ($k = 0; $k < $getTotalArray; $k++) {
-                if (isset($ktp_visitor[$k])) {
-                    $fileKTPVisitor  = $request->file('ktp_visitor')[$k];
-                    $fileNameKTPVisitor = time() . "." . $fileKTPVisitor->getClientOriginalName();  //TODO: Save KTP to storage
-                    $fileKTPVisitor->move("file/ktp/", $fileNameKTPVisitor);
+            if ($getTotalArray != 0) {
+                for ($k = 0; $k < $getTotalArray; $k++) {
+                    if (isset($ktp_visitor[$k])) {
+                        $fileKTPVisitor  = $request->file('ktp_visitor')[$k];
+                        $fileNameKTPVisitor = time() . "." . $fileKTPVisitor->getClientOriginalName();  //TODO: Save KTP to storage
+                        $fileKTPVisitor->move("file/ktp/", $fileNameKTPVisitor);
+                    }
+    
+                    $dataVisitPeople = [
+                        'visit_id' => $visit->id,
+                        'nama' => $nama_visitor[$k],
+                        'jabatan' => $jabatan_visitor[$k],
+                        'perusahaan' => $perusahaan_visitor[$k],
+                        'ktp' => isset($ktp_visitor[$k]) ? $fileNameKTPVisitor : null
+                    ];
+    
+                    VisitPeople::create($dataVisitPeople);
                 }
-
-                $dataVisitPeople = [
-                    'visit_id' => $visit->id,
-                    'nama' => $nama_visitor[$k],
-                    'jabatan' => $jabatan_visitor[$k],
-                    'perusahaan' => $perusahaan_visitor[$k],
-                    'ktp' => isset($ktp_visitor[$k]) ? $fileNameKTPVisitor : null
-                ];
-
-                VisitPeople::create($dataVisitPeople);
             }
         } catch (\Throwable $th) {
             DB::rollback(); //* DB Transaction Failed

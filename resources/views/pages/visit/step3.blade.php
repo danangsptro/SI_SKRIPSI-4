@@ -14,7 +14,7 @@
             <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14">
         </td>
         <td>
-            <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14" required>
+            <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14">
         </td>
         <td>
             <div class="custom-file">
@@ -23,7 +23,7 @@
             </div>
         </td>
         <td>
-            <input type="text" name="perusahaan_visitor[]" placeholder="Masukan Perusahaan" class="form-control fs-14" required>
+            <input type="text" name="perusahaan_visitor[]" placeholder="Masukan Perusahaan" class="form-control fs-14">
         </td>
         <td>
             {{--  --}}
@@ -39,10 +39,10 @@
         $("#dynamicAddRemove").append(
             `<tr>
                 <td>
-                    <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14" required>
+                    <input type="text" name="nama_visitor[]" placeholder="Masukan Nama" class="form-control fs-14">
                 </td>
                 <td>
-                    <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14" required>
+                    <input type="text" name="jabatan_visitor[]" placeholder="Masukan Jabatan" class="form-control fs-14">
                 </td>
                 <td>
                     <div class="custom-file">
@@ -51,7 +51,7 @@
                     </div>
                 </td>
                 <td>
-                    <input type="text" name="perusahaan_visitor[]" placeholder="Masukan Perusahaan" class="form-control fs-14" required>
+                    <input type="text" name="perusahaan_visitor[]" placeholder="Masukan Perusahaan" class="form-control fs-14">
                 </td>
                 <td class="text-center">
                     <button type="button" class="btn btn-sm btn-danger remove-input-field"><i class="fa fa-trash mr-2"></i>Hapus</button>
