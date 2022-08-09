@@ -42,14 +42,12 @@
         </a>
     </li>
     @endif
-    @if ($role_id == 1 || $role_id == 3)
     <li class="nav-item">
         <a class="nav-link" href="{{ route('visit.index') }}">
             <i class="fas fa-fw fa-plus"></i>
             <span>Visit</span>
         </a>
     </li>
-    @endif
     @if ($role_id == 1)
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
