@@ -110,6 +110,9 @@ return [
     'locale' => 'id',
     'faker_locale' => 'id_ID',
 
+    'name' => env('APP_NAME', 'Laravel'),
+    'mail_from' => env('MAIL_USERNAME'),
+    'mail_name' => env('MAIL_NAME'),
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Mail;
 use DataTables;
 
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class VisitController extends Controller
         if ($request->ajax()) {
             return $this->dataTable($role_id, $email, $status, $tgl_awal, $tgl_akhir);
         }
-        
+
         return view($this->pages . 'index', compact(
             'title',
             'desc',
@@ -152,6 +153,7 @@ class VisitController extends Controller
          * 1. visits
          * 2. visit_rooms
          * 3. visit_peoples
+         * 4. Send Email
          */
 
         DB::beginTransaction(); //* DB Transaction Begin
@@ -206,10 +208,10 @@ class VisitController extends Controller
             }
 
             //* Tahap 3
-            $getTotalArray = count($request->nama_visitor);
+            $getTotalVisitor = count($request->nama_visitor);
 
             if ($request->nama_visitor[0] != null) {
-                for ($k = 0; $k < $getTotalArray; $k++) {
+                for ($k = 0; $k < $getTotalVisitor; $k++) {
                     if (isset($ktp_visitor[$k])) {
                         $fileKTPVisitor  = $request->file('ktp_visitor')[$k];
                         $fileNameKTPVisitor = time() . "." . $fileKTPVisitor->getClientOriginalName();  //TODO: Save KTP to storage
@@ -226,6 +228,24 @@ class VisitController extends Controller
 
                     VisitPeople::create($dataVisitPeople);
                 }
+            }
+
+            //* Tahap 4
+            $sendEmails = User::whereIn('role_id', [1, 2, 4])->get(); //* Get role for received notification from email (security, admin, manager)
+
+            foreach ($sendEmails as $e) {
+                $email = $e->email;
+
+                $data = array(
+                    'username' => $e->nama,
+                    'total_visitor' => $getTotalVisitor + 1
+                );
+
+                //* Send email
+                Mail::send('layouts.mail', $data, function ($message) use ($email) {
+                    $message->to($email)->subject('Notifikasi Visitor');
+                    $message->from(config('app.mail_from'), config('app.mail_name'));
+                });
             }
         } catch (\Throwable $th) {
             DB::rollback(); //* DB Transaction Failed

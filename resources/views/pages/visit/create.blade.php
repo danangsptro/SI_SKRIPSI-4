@@ -104,6 +104,7 @@
 
     // Store
     $('#form').on('submit', function (e) {
+        $('#loading').show();
         if ($(this)[0].checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -135,6 +136,7 @@
                 contentType: false,
                 processData: false,
                 success : function(data) {
+                    $('#loading').hide();
                     $('#form').removeClass('was-validated');
                     $('#modalForm').modal('toggle');
                     $.confirm({
@@ -158,6 +160,7 @@
                     });
                 },
                 error : function(data){ 
+                    $('#loading').hide();
                     $('#modalForm').modal('toggle');
                     err = '';
                     respon = data.responseJSON;

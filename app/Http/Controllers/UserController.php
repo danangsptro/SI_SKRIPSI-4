@@ -81,7 +81,7 @@ class UserController extends Controller
         $request->validate([
             'role_id' => 'required',
             'nama' => 'required|max:50',
-            // 'email' => 'required|max:100|unique:users,email',
+            'email' => 'required|max:100|unique:users,email',
             'perusahaan' => 'required',
             'jabatan' => 'required',
             'no_telp' => 'required',
