@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Title --> 
-    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/logo.jpeg') }}" type="image/x-icon">
     <title>{{ env('APP_NAME') }} | Form Login</title>
 
     <!-- Icon -->
@@ -27,7 +27,7 @@
             <p class="text-primary font-weight-bolder fs-20">Visit Data Center</p>
         </div>
         <div class="col-md-6 text-right">
-            <img src="{{ asset('images/logo.png') }}" width="150" alt="Logo">
+            <img src="{{ asset('images/logo.jpeg') }}" width="150" alt="Logo">
         </div>
     </div>
     <div class="col-md-4 container mt-10-m">

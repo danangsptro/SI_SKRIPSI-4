@@ -4,7 +4,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <a class="sidebar-brand d-flex align-items-center bg-white justify-content-center" href="index.html">
         <div class="mx-3">
-            <img src="{{ asset('images/logo.png') }}" class="img-fluid" width="100" alt="">
+            <img src="{{ asset('images/logo.jpeg') }}" class="img-fluid" width="90" alt="">
         </div>
     </a>
     <hr class="sidebar-divider my-0">
