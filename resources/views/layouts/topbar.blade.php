@@ -7,7 +7,7 @@
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
-                <span class="badge badge-danger badge-counter">+<span id="getNofitVisit"></span></span>
+                <span class="badge badge-danger badge-counter">+<span id="getNotifVisit"></span></span>
             </a>
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <div>
-                        <span class="font-weight-bold">Terdapat <span id="getNofitVisit1"></span> data visit belum disetujui.</span>
+                        <span class="font-weight-bold">Terdapat <span id="getNotifVisit1"></span> data visit belum disetujui.</span>
                     </div>
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="{{ route('visit.index') }}">Lihat data visit</a>
@@ -70,10 +70,10 @@
 <script type="text/javascript">
     ajaxCall();
     function ajaxCall(){
-        url = "{{ route('getNofitVisit') }}";
+        url = "{{ route('getNotifVisit') }}";
         $.get(url, function(data){
-            $('#getNofitVisit').html(data);
-            $('#getNofitVisit1').html(data);
+            $('#getNotifVisit').html(data);
+            $('#getNotifVisit1').html(data);
         }, 'JSON'); 
     }
 

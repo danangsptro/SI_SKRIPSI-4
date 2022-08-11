@@ -235,6 +235,8 @@ class VisitController extends Controller
 
             foreach ($sendEmails as $e) {
                 $email = $e->email;
+                $mailFrom = config('app.mail_from');
+                $mailName = config('app.mail_name');
 
                 $data = array(
                     'username' => $e->nama,
@@ -242,9 +244,9 @@ class VisitController extends Controller
                 );
 
                 //* Send email
-                Mail::send('layouts.mail', $data, function ($message) use ($email) {
+                Mail::send('layouts.mail', $data, function ($message) use ($email, $mailFrom, $mailName) {
                     $message->to($email)->subject('Notifikasi Visitor');
-                    $message->from(config('app.mail_from'), config('app.mail_name'));
+                    $message->from($mailFrom, $mailName);
                 });
             }
         } catch (\Throwable $th) {

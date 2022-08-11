@@ -20,7 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     // Utility
-    Route::get('get-notif-visit', 'HomeController@getNotifVisit')->name('getNofitVisit');
+    Route::get('get-notif-visit', 'HomeController@getNotifVisit')->name('getNotifVisit');
 
     // User
     Route::resource('user', 'UserController');
