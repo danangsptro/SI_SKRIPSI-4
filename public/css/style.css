@@ -4,10 +4,18 @@
     position: absolute;
 }
 
+.ml-n130{
+    margin-left: -150px !important;
+}
+
 @media (max-width: 768px) {
     .img-dynamic{
         display: none;
     } 
+
+    .ml-n130{
+        margin-left: 0px !important;
+    }
 
     .top-bar-login{
         display: none;
@@ -24,6 +32,12 @@
         text-align: left !important;
     }
 }  
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
 
 .css-selector {
     background: linear-gradient(89deg, #0f51d2, #1cf8f2, #5aaf2b, #f7b364);

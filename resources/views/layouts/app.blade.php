@@ -27,7 +27,6 @@
 
     <!-- Animate CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -39,6 +38,11 @@
                     <div class="alert alert-warning text-center position-absolute fw-bold fs-14 p-2" style="z-index: 9999999; left: 47%; display: none" id="loading">Harap tunggu.</div>
                     @yield('content')
                 </main>
+                <div class="text-center">
+                    <footer class="footer shadow-lg bg-white p-3">
+                        <p class="text-gray-800 m-0 ml-n130 fs-13">Copyright © PT. Jedi Global Teknologi 2022</p>
+                    </footer>
+                </div>
             </div>
         </div>
     </div>
