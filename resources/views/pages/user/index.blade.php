@@ -250,7 +250,7 @@
         }else{    
             $('#loading').show();
             $('#alert').html('');
-            // $('#btnSave').attr('disabled', true);
+            $('#btnSave').attr('disabled', true);
             
             url = (save_method == 'add') ? "{{ route('user.store') }}" : "{{ route('user.update', ':id') }}".replace(':id', $('#id').val());
             $.ajax({

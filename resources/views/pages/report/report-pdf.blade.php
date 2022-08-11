@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($datas as $key => $i)
+            @forelse ($datas as $key => $i)
                 <tr>
                     <td class="p-2 text-center">{{ $key+1 }}</td>
                     <td class="p-2">{{ $i->nama_pengunjung }}</td>
@@ -57,7 +57,11 @@
                         @endif
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="7" class="text-center p-2">Tidak ada data.</td>         
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </body>
