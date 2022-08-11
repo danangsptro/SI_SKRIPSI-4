@@ -87,6 +87,10 @@
                             <label class="col-md-4 text-right font-weight-bold fs-14">Status Keterangan</label>
                             <label class="col-md-8 fs-14">{{ $data->ket_status }}</label>
                         </div>
+                        <div class="row">
+                            <label class="col-md-4 text-right font-weight-bold fs-14">Tanggal Approve</label>
+                            <label class="col-md-8 fs-14">{{ $data->tgl_approve ? Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->tgl_approve)->format('d F Y | H:i:s') : '' }}</label>
+                        </div>
                     </div>
                 </div>
                 <hr>
@@ -103,9 +107,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            <tr>
+                                <td class="text-center">1</td>
+                                <td>{{ $data->nama_pengunjung }}</td>
+                                <td>{{ $data->jabatan }}</td>
+                                <td>{{ $data->perusahaan }}</td>
+                                <td class="text-center">
+                                    <a href="{{ asset('file/ktp/' . $data->ktp) }}" class="text-info" target="blank">Lihat File<i class="fa fa-eye ml-2"></i></a>
+                                </td>
+                            </tr>
                             @foreach ($peoples as $key => $p)
                                 <tr>
-                                    <td class="text-center">{{ $key+1 }}</td>
+                                    <td class="text-center">{{ $key+2 }}</td>
                                     <td>{{ $p->nama }}</td>
                                     <td>{{ $p->jabatan }}</td>
                                     <td>{{ $p->perusahaan }}</td>

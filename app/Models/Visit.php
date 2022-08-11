@@ -39,4 +39,24 @@ class Visit extends Model
 
         return $data->get();
     }
+
+    public static function queryCetakPDF($status, $tgl_awal, $tgl_akhir)
+    {
+        $data = Visit::select('id', 'purpose_id', 'nama_pengunjung', 'perusahaan', 'jabatan', 'email', 'no_telp', 'ktp', 'tanggal', 'waktu', 'status', 'created_at')
+            ->when($status != 99, function ($q) use ($status) {
+                return $q->where('status', $status);
+            });
+
+        if ($tgl_awal != null ||  $tgl_akhir != null) {
+            if ($tgl_awal != null && $tgl_akhir == null) {
+                $data->whereDate('tanggal', $tgl_awal);
+            } else {
+                $data->whereBetween('tanggal', [$tgl_awal, $tgl_akhir]);
+            }
+        }
+
+        $data->orderBy('tanggal', 'ASC');
+
+        return $data->get();
+    }
 }

@@ -126,7 +126,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="4" class="p-1 text-black">Date: </td>
+                <td colspan="4" class="p-1 text-black">Date: {{ $data->tgl_approve ? Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->tgl_approve)->format('d F Y | H:i:s') : '' }}</td>
             </tr>
         </tbody>
     </table>

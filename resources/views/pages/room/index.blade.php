@@ -11,7 +11,7 @@
     </div>  
     <div class="card my-2">
         <div class="card-body">
-            <div class="col-md-6 px-0">
+            <div class="col-md-6 container px-0">
                 <div class="row mb-2">
                     <label for="status_filter" class="col-form-label col-md-2 text-right font-weight-bolder fs-14">Status </label>
                     <div class="col-sm-8">

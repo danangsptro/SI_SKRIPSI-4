@@ -40,4 +40,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('profile', 'ProfileController@index')->name('profile.index');
     Route::post('profile/update/{id}', 'ProfileController@update')->name('profile.update');
     Route::post('/profile/update-password/{id}', 'ProfileController@updatePassword')->name('profile.updatePassword');
+
+    // Report
+    Route::get('report', 'ReportController@index')->name('report.index');
+    Route::get('report/cetak-pdf', 'ReportController@cetakPDF')->name('report.cetakPDF');
 });

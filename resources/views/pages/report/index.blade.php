@@ -6,13 +6,10 @@
         <p class="fs-30 mb-0">{{ $title }}</p>
         <span>{{ $desc }}</span>
     </div>
-    <div class="mt-4 text-right">
-        <a href="{{ route('visit.create') }}" class="btn btn-sm btn-success"><i class="fa fa-plus mr-2"></i>Tambah Data</a>
-    </div> 
     <div class="card my-2">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-6 px-0 container">
+                <div class="col-md-6 px-0">
                     <div class="row mb-2">
                         <label for="status_filter" class="col-form-label col-md-2 text-right font-weight-bolder fs-14">Status </label>
                         <div class="col-sm-8">
@@ -40,8 +37,31 @@
                     <div class="row mb-4">
                         <div class="col-sm-2"></div>
                         <div class="col-sm-8">
-                            <button class="btn btn-success btn-sm" onclick="pressOnChange()"><i class="fa fa-filter mr-2"></i>Filter</button>
+                            <button class="btn btn-success btn-sm mr-2" onclick="pressOnChange()"><i class="fa fa-filter mr-2"></i>Filter</button>
+                            <a href="" target="blank" class="btn btn-primary btn-sm" id="exportpdf"><i class="fa fa-print mr-2"></i>Print</a>
                         </div> 
+                    </div>
+                </div>
+                <div class="col-md-6 px-0">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4 mb-2">
+                            <div class="p-2 bg-success text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Disetujui</p>
+                                <p class="mb-0 fs-14">{{ $disetujui }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <div class="p-2 bg-warning text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Pending</p>
+                                <p class="mb-0 fs-14">{{ $pending }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-2">
+                            <div class="p-2 bg-danger text-white rounded text-center">
+                                <p class="mb-0 font-weight-bold fs-16 mb-1">Total Ditolak</p>
+                                <p class="mb-0 fs-14">{{ $ditolak }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -60,7 +80,6 @@
                             <th width="15%">Tanggal Visit</th>
                             <th width="10%">Jumlah</th>
                             <th width="10%">Status</th>
-                            <th width="5%">Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -94,41 +113,22 @@
             {data: 'tgl_visit', name: 'tgl_visit'},
             {data: 'jumlah', name: 'jumlah'},
             {data: 'status', name: 'status', className: 'text-center'},
-            {data: 'action', name: 'action', className: 'text-center', orderable: false, searchable: false}
         ]
     });
 
     pressOnChange();
     function pressOnChange(){
         table.api().ajax.reload();
-    }
 
-    function remove(id){
-        $.confirm({
-            title: 'Konfirmasi',
-            content: 'Apakah Anda yakin ingin menghapus data ini ?',
-            icon: 'bi bi-question text-danger',
-            theme: 'modern',
-            closeIcon: true,
-            animation: 'scale',
-            type: 'red',
-            buttons: {
-                ok: {
-                    text: "ok!",
-                    btnClass: 'btn-primary',
-                    keys: ['enter'],
-                    action: function(){
-                        $.post("{{ route('visit.destroy', ':id') }}".replace(':id', id), {'_method' : 'DELETE'}, function(data) {
-                            table.api().ajax.reload();
-                            success(data.message)
-                        }, "JSON").fail(function(){
-                            reload();
-                        });
-                    }
-                },
-                cancel: function(){}
-            }
-        });
+        status_filter = $('#status_filter').val();
+        tgl_awal = $('#tgl_awal').val();
+        tgl_akhir = $('#tgl_akhir').val();
+
+        params = "?status_filter=" + status_filter + "&tgl_awal=" + tgl_awal + "&tgl_akhir=" + tgl_akhir;
+
+        url = "{{ route('report.cetakPDF') }}" + params
+
+        $('#exportpdf').attr('href', url)
     }
 </script>
 @endpush

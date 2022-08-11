@@ -50,7 +50,7 @@
     </li>
     @if ($role_id == 1 || $role_id == 2 || $role_id == 4)
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('report.index') }}">
             <i class="fas fa-fw fa-file-pdf"></i>
             <span>Report</span>
         </a>

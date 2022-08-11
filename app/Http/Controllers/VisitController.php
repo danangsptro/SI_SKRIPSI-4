@@ -38,19 +38,11 @@ class VisitController extends Controller
         if ($request->ajax()) {
             return $this->dataTable($role_id, $email, $status, $tgl_awal, $tgl_akhir);
         }
-
-        //* Get total status
-        $pending   = Visit::where('status', 0)->when($role_id == 3, function ($q) use ($email) { return $q->where('email', $email); })->count();
-        $disetujui = Visit::where('status', 1)->when($role_id == 3, function ($q) use ($email) { return $q->where('email', $email); })->count();
-        $ditolak   = Visit::where('status', 2)->when($role_id == 3, function ($q) use ($email) { return $q->where('email', $email); })->count();
-
+        
         return view($this->pages . 'index', compact(
             'title',
             'desc',
-            'role_id',
-            'disetujui',
-            'ditolak',
-            'pending'
+            'role_id'
         ));
     }
 
@@ -275,10 +267,14 @@ class VisitController extends Controller
             'ket_status' => 'required'
         ]);
 
+        //* Get time now
+        $now = Carbon::now();
+        $time = $now->toDateTimeString();
+
         $input = $request->all();
 
         $data = Visit::find($id);
-        $data->update($input);
+        $data->update($input + ['tgl_approve' => $time]);
 
         return redirect()
             ->route('visit.show', $id)
@@ -298,6 +294,7 @@ class VisitController extends Controller
         $rooms = VisitRoom::select('id', 'room_id', 'visit_id')->where('visit_id', $id)->get();
         $peoples = VisitPeople::select('id', 'visit_id', 'nama', 'jabatan', 'perusahaan', 'ktp')->where('visit_id', $id)->get();
 
+        //TODO: Print to PDF
         $pdf = app('dompdf.wrapper');
         $pdf->getDomPDF()->set_option("enable_php", true);
         $pdf->setPaper('portrait');
