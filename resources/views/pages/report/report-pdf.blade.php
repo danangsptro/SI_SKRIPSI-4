@@ -16,10 +16,6 @@
         .bt-none {
             border-bottom: none !important
         }
-
-        .h-10 {
-            height: 40px !important;
-        }
     </style>
 
 </head>
