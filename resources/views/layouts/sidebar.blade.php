@@ -48,7 +48,7 @@
             <span>Visit</span>
         </a>
     </li>
-    @if ($role_id == 1)
+    @if ($role_id == 1 || $role_id == 2 || $role_id == 4)
     <li class="nav-item">
         <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-file-pdf"></i>
