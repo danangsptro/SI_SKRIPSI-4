@@ -5,7 +5,7 @@
  Source Server Type    : MySQL
  Source Server Version : 100316
  Source Host           : localhost:3306
- Source Schema         : visitor_bagus
+ Source Schema         : visitor
 
  Target Server Type    : MySQL
  Target Server Version : 100316
