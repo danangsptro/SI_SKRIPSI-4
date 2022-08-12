@@ -127,8 +127,7 @@ class VisitController extends Controller
             'jabatan' => 'required',
             'no_telp' => 'required',
             'tanggal' => 'required',
-            'waktu' => 'required',
-            'ktp' => 're'
+            'waktu' => 'required'
         ]);
 
         //* Get Params
@@ -300,6 +299,25 @@ class VisitController extends Controller
 
         $data = Visit::find($id);
         $data->update($input + ['tgl_approve' => $time]);
+
+        //* Send email for notification
+        $email = $data->email;
+        $mailFrom = config('app.mail_from');
+        $mailName = config('app.mail_name');
+
+        $data = array(
+            'username' => $data->nama_pengunjung,
+            'tanggal' => $data->tanggal,
+            'waktu' => $data->waktu,
+            'status' => $request->status,
+            'ket_status' => $request->ket_status
+        );
+
+        //* Send email
+        Mail::send('layouts.mail-approve', $data, function ($message) use ($email, $mailFrom, $mailName) {
+            $message->to($email)->subject('Notifikasi Requestor');
+            $message->from($mailFrom, $mailName);
+        });
 
         return redirect()
             ->route('visit.show', $id)
