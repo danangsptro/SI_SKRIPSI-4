@@ -123,7 +123,11 @@
                                     <td>{{ $p->jabatan }}</td>
                                     <td>{{ $p->perusahaan }}</td>
                                     <td class="text-center">
+                                        @if ($p->ktp)
                                         <a href="{{ asset('file/ktp/' . $p->ktp) }}" class="text-info" target="blank">Lihat File<i class="fa fa-eye ml-2"></i></a>
+                                        @else
+                                        <span>-</span>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
