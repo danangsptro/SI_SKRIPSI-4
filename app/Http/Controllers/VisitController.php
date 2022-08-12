@@ -127,7 +127,8 @@ class VisitController extends Controller
             'jabatan' => 'required',
             'no_telp' => 'required',
             'tanggal' => 'required',
-            'waktu' => 'required'
+            'waktu' => 'required',
+            'ktp' => 're'
         ]);
 
         //* Get Params

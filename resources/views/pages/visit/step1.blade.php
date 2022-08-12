@@ -37,7 +37,7 @@
             <label for="ktp" class="col-sm-3 text-right col-form-label font-weight-bold">Kartu Pengenal <span class="text-danger">*</span></label>
             <div class="col-sm-9">
                 <div class="custom-file">
-                    <input type="file" re class="custom-file-input" id="file1" name="ktp" required>
+                    <input type="file" re class="custom-file-input" id="file1" name="ktp" accept="image/png, image/gif, image/jpeg" required>
                     <label class="custom-file-label fileName1" for="validatedCustomFile">(KTP, ID Card) format (pdf, jpeg, jpg, png)</label>
                     <div class="invalid-feedback">KTP tidak boleh kosong</div>
                 </div>
@@ -48,7 +48,7 @@
             <label for="surat_tugas" class="col-sm-3 text-right col-form-label font-weight-bold">Surat Tugas</label>
             <div class="col-sm-9">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="file2" name="surat_tugas">
+                    <input type="file" class="custom-file-input" id="file2" name="surat_tugas" accept="image/png, image/gif, image/jpeg">
                     <label class="custom-file-label fileName2" for="validatedCustomFile">format (pdf, jpeg, jpg, png)</label>
                     <div class="invalid-feedback">Surat Tugas tidak boleh kosong</div>
                 </div>
@@ -58,7 +58,7 @@
             <label for="surat_izin" class="col-sm-3 text-right col-form-label font-weight-bold">Surat Izin Kerja</label>
             <div class="col-sm-9">
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="file3" name="surat_izin">
+                    <input type="file" class="custom-file-input" id="file3" name="surat_izin" accept="image/png, image/gif, image/jpeg">
                     <label class="custom-file-label fileName3" for="validatedCustomFile">format (pdf, jpeg, jpg, png)</label>
                     <div class="invalid-feedback">Surat Izin Kerja tidak boleh kosong</div>
                 </div>

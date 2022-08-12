@@ -18,7 +18,7 @@
         </td>
         <td>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="file_visitor1" value="" name="ktp_visitor[]">
+                <input type="file" class="custom-file-input" id="file_visitor1" value="" name="ktp_visitor[]" accept="image/png, image/gif, image/jpeg">
                 <label class="custom-file-label fileNameVisitor1" for="validatedCustomFile">Pilih File (pdf, jpeg, jpg, png)</label>
             </div>
         </td>
@@ -46,7 +46,7 @@
                 </td>
                 <td>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="file_visitor${i}" value="" name="ktp_visitor[]">
+                        <input type="file" class="custom-file-input" id="file_visitor${i}" value="" name="ktp_visitor[]" accept="image/png, image/gif, image/jpeg">
                         <label class="custom-file-label fileNameVisitor${i}" for="validatedCustomFile">Pilih File (pdf, jpeg, jpg, png)</label>
                     </div>
                 </td>
