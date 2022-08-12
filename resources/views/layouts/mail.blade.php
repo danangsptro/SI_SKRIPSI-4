@@ -383,7 +383,7 @@
                                                                 cellspacing="0">
                                                                 <tbody>
                                                                     <tr>
-                                                                        <td> <a href="{{ route('visit.index') }}" target="_blank">Klik di sini.</a> </td>
+                                                                        <td> <a href="{{ route('visit.show', $id) }}" target="_blank">Klik di sini.</a> </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>

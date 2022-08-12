@@ -234,13 +234,15 @@ class VisitController extends Controller
             $sendEmails = User::whereIn('role_id', [1, 2, 4])->get(); //* Get role for received notification from email (security, admin, manager)
 
             foreach ($sendEmails as $e) {
+                $totalVisitor = $visit->people->count();
                 $email = $e->email;
                 $mailFrom = config('app.mail_from');
                 $mailName = config('app.mail_name');
 
                 $data = array(
                     'username' => $e->nama,
-                    'total_visitor' => $getTotalVisitor + 1
+                    'total_visitor' => $totalVisitor + 1,
+                    'id' => $visit->id
                 );
 
                 //* Send email
