@@ -148,7 +148,7 @@
                         <label for="ktp" class="col-sm-3 col-form-label font-weight-bold">ID Card <span class="text-danger" id="required_ktp">*</span></label>
                         <div class="col-sm-9">
                             <div class="custom-file">
-                                <input type="file" re class="custom-file-input" id="file" name="ktp" required>
+                                <input type="file" re class="custom-file-input" id="file" name="ktp" required accept="image/png, image/gif, image/jpeg">
                                 <label class="custom-file-label fileName" for="validatedCustomFile">format (pdf, jpeg, jpg, png)</label>
                                 <div class="invalid-feedback">KTP tidak boleh kosong</div>
                             </div>
