@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Title --> 
-    <link rel="icon" href="{{ asset('images/logo.jpeg') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
     <title>{{ env('APP_NAME') }} | Form Login</title>
 
     <!-- Icon -->
