@@ -137,7 +137,7 @@
                 @if ($role_id == 2 && $data->status == 0)
                 <hr>
                 <p class="bg-info text-white font-weight-bold fs-16 py-2 px-4 rounded">Form Persetujuan</p>
-                <div class="col-md-6">
+                <div class="col-md-6" style="margin-bottom: 100px !important">
                     <form action="{{ route('visit.updateStatus', $data->id) }}" class="fs-14 needs-validation" novalidate method="POST">
                         @csrf
                         <div class="row mb-2">
