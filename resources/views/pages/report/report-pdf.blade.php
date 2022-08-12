@@ -37,13 +37,13 @@
         <tbody>
             @forelse ($datas as $key => $i)
                 <tr>
-                    <td class="p-2 text-center">{{ $key+1 }}</td>
-                    <td class="p-2">{{ $i->nama_pengunjung }}</td>
-                    <td class="p-2">{{ $i->email }}</td>
-                    <td class="p-2">{{ $i->created_at }}</td>
-                    <td class="p-2">{{ $i->tanggal }} {{ $i->waktu }}</td>
-                    <td class="p-2">{{ $i->people->count()+1 }} Orang</td>
-                    <td class="p-2 text-center">
+                    <td class="p-2 text-black text-center">{{ $key+1 }}</td>
+                    <td class="p-2 text-black">{{ $i->nama_pengunjung }}</td>
+                    <td class="p-2 text-black">{{ $i->email }}</td>
+                    <td class="p-2 text-black">{{ $i->created_at }}</td>
+                    <td class="p-2 text-black">{{ $i->tanggal }} {{ $i->waktu }}</td>
+                    <td class="p-2 text-black">{{ $i->people->count()+1 }} Orang</td>
+                    <td class="p-2 text-black text-center">
                         @if ($i->status == 0)
                             Pending
                         @elseif($i->status == 1)
