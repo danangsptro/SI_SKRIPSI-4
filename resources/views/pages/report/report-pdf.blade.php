@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <p class="text-center font-weight-bold fs-14 text-black">DATA LAPORAN VISIT {{ $tgl_awal ? 'TANGGAL ' . $tgl_awal : '' }} {{ $tgl_akhir ? ' - ' . $tgl_akhir : '' }}</p>
+    <p class="text-center font-weight-bold fs-14 text-black">DATA LAPORAN VISIT {{ $tgl_awal ? 'TANGGAL ' . $tgl_awal : '' }} {{ $tgl_akhir ? ' SAMPAI ' . $tgl_akhir : '' }}</p>
     <table class="table table-bordered fs-10">
         <thead>
             <tr>
