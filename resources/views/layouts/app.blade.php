@@ -37,7 +37,7 @@
                     @yield('content')
                 </main>
                 <div class="text-center">
-                    <footer class="footer shadow-lg bg-white p-3">
+                    <footer class="footer shadow-lg bg-white p-3" style="z-index: 99999">
                         <p class="text-gray-800 m-0 ml-n130 fs-13">Copyright © PT. Jedi Global Teknologi 2022</p>
                     </footer>
                 </div>

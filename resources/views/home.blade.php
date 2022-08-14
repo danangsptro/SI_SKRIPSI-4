@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 100px !important">
     <div class="row">
         @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2)
         <div class="col-xl-3 col-md-6 mb-4">

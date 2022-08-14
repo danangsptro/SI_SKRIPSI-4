@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', $title)
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 100px !important">
     <div class="card my-4">
         <h5 class="card-header bg-primary text-white font-weight-bold">Tambah Visit</h5>
         <div class="card-body">

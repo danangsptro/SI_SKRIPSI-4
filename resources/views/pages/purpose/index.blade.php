@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', $title)
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 100px !important">
     <div class="font-weight-bold text-black">
         <p class="fs-30 mb-0">{{ $title }}</p>
         <span>{{ $desc }}</span>
