@@ -81,7 +81,7 @@
                 <div class="text-center">
                     <img src="{{ asset('images/agreement.jpeg') }}" class="img-fluid" alt="">
                     <div class="mt-2">
-                        <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fa fa-times mr-2"></i>Batalkan</button>
+                        <button type="button" class="btn btn-sm btn-danger mr-2" data-dismiss="modal"><i class="fa fa-times mr-2"></i>Batalkan</button>
                         <button class="btn btn-sm btn-success fs-14" onclick="triggerFromButton()"><i class="fa fa-save mr-2"></i>Simpan Data</button>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
             event.stopPropagation();
             $.confirm({
                 title: 'Error',
-                content: 'Lengkap form dengan benar',
+                content: 'Lengkapi form dengan benar',
                 icon: 'bi bi-patch-exclamation-fill',
                 theme: 'modern',
                 closeIcon: true,
@@ -121,7 +121,10 @@
                     ok: {
                         text: "ok!",
                         btnClass: 'btn btn-sm btn-primary',
-                        keys: ['enter']
+                        keys: ['enter'],
+                        action: function () {
+                            $('#loading').hide();
+                        }
                     }
                 }
             });
