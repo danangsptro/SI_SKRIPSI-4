@@ -91,6 +91,16 @@
                             <label class="col-md-4 text-right font-weight-bold fs-14">Tanggal Approve</label>
                             <label class="col-md-8 fs-14">{{ $data->tgl_approve ? Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->tgl_approve)->format('d F Y | H:i:s') : '' }}</label>
                         </div>
+                        <div class="row">
+                            <label class="col-md-4 text-right font-weight-bold fs-14">Selesai Visit</label>
+                            <label class="col-md-8 fs-14">{{ $data->waktu_selesai ? Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $data->waktu_selesai)->format('d F Y | H:i:s') : '' }}</label>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-4"></label>
+                            <label class="col-md-8 fs-14">
+                                <a href="{{ route('visit.selesaiVisit', $data->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-times mr-2"></i>End Visit</a>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 <hr>

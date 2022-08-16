@@ -324,6 +324,22 @@ class VisitController extends Controller
             ->withSuccess("Selamat! Data Visit berhasil diperbaharui.");
     }
 
+    public function visitSelesai($id)
+    {
+        $time = Carbon::now();
+        $selesaiVisit = $time->format('Y-m-d H:i:s');
+       
+        //* Update Data
+        $data = Visit::find($id);
+        $data->update([
+            'waktu_selesai' => $selesaiVisit
+        ]);
+
+        return redirect()
+            ->route('visit.show', $id)
+            ->withSuccess("Visit telah berakhir.");
+    }
+
     public function destroy($id)
     {
         Visit::destroy($id);
