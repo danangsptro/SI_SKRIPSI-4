@@ -23,7 +23,7 @@ class VisitController extends Controller
     protected $title = 'Visit';
     protected $pages = 'pages.visit.';
     protected $desc  = 'Menu ini berisikan data Visit';
-
+    
     public function index(Request $request)
     {
         $title = $this->title;

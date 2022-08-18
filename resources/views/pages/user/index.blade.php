@@ -264,6 +264,7 @@
                     table.api().ajax.reload();
                     if(save_method == 'add') $('#form').trigger('reset');
                     $('#form').removeClass('was-validated');  
+                    $('.custom-file-label').html('')
                 },
                 error : function(data){
                     err = ''; respon = data.responseJSON;
