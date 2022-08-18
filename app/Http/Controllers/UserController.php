@@ -78,10 +78,11 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
+        //* Validation
         $request->validate([
             'role_id' => 'required',
             'nama' => 'required|max:50',
-            'email' => 'required|max:100|unique:users,email',
+            'email' => 'required|max:100',
             'perusahaan' => 'required',
             'jabatan' => 'required',
             'no_telp' => 'required',

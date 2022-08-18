@@ -18,13 +18,14 @@
         }
 
         .h-10 {
-            height: 40px !important;
+            height: -20px !important;
         }
     </style>
 
 </head>
 
 <body>
+    <img class="mb-3" src="{{ public_path('images/logo.jpeg') }}" alt="logo" width="100">
     <p class="text-center font-weight-bold fs-14 text-black">DATA CENTER VISIT REQUEST</p>
     <table class="table table-bordered fs-10">
         <thead>
@@ -49,7 +50,7 @@
                 <td width="25%" class="p-2 bg-gray-200">Date of Visit <p class="fs-9 mb-0">(Mon-Fri only for normal / Schedule maintenance)</p></td>
                 <td width="25%" class="p-2">{{ Carbon\Carbon::createFromFormat('Y-m-d', $data->tanggal)->format('d F Y') }}</td>
                 <td width="25%" class="p-2 bg-gray-200">Time of Visit <p class="fs-9 mb-0">(9:30am – 6:30pm only for normal/schedule maintenance)</p></td>
-                <td width="25%" class="p-2">{{ $data->waktu }}</td>
+                <td width="25%" class="p-2">{{ $data->waktu }} - {{ substr($data->waktu_selesai,10) }}</td>
             </tr>
             <tr class="text-black">
                 <td width="25%" class="p-2 bg-gray-200">Area to be visited :</td>
@@ -121,7 +122,7 @@
             <tr>
                 <td colspan="4" class="h-10 text-center">
                     @if ($data->status == 1)
-                        <img class="img-fluid" src="{{ public_path('images/ttd.png') }}" width="200" alt="TTD">
+                        <img class="img-fluid" src="{{ public_path('images/ttd.png') }}" width="300" alt="TTD">
                     @endif
                 </td>
             </tr>
